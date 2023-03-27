@@ -1,0 +1,54 @@
+ion-content {
+  --background: url("../../../assets/img/login/background.png") 0 0/100% 100%
+    no-repeat;
+
+  .container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 90%;
+      background-color: rgba(0, 0, 0, 1);
+      border-radius: 1rem;
+      padding: 1rem;
+
+      form {
+        width: 100%;
+      }
+
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        width: 100%;
+
+        .input-content {
+          width: 100%;
+          border-bottom: 1px solid #5F5F5F;
+          font-size: 0.8rem;
+          color: rgb(189, 189, 189);
+        }
+
+        .input-wrapper {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          .submit-content {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
