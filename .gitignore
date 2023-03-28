@@ -15,6 +15,7 @@ log.txt
 /resources
 /.sourcemaps
 /.versions
+/enviroments
 /coverage
 /android
 /www
