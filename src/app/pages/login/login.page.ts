@@ -19,7 +19,6 @@ export class LoginPage implements OnInit {
 
   async login() {
     try {
-      console.log('triying')
       const user = await this.auth.login('prueba@cocoglobalmedia.com', 'prueba')
       this.user = user;
       console.log(this.user)
