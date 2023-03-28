@@ -10,8 +10,7 @@ import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot({ mode: "ios" }), AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig)],
+  imports: [BrowserModule, IonicModule.forRoot({ mode: "ios" }), AppRoutingModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
