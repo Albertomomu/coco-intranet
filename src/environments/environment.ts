@@ -20,7 +20,6 @@ export const environment = {
 };
 
 const app = initializeApp(environment.firebaseConfig);
-const auth = getAuth(app);
 
 /*
  * For easier debugging in development mode, you can import the following file
