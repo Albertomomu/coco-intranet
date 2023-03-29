@@ -37,13 +37,12 @@ export class LoginPage implements OnInit {
     } */
 
     this.auth
-      .login(this.userFormData.email, this.userFormData.password)
+      .login("prueba@cocoglobalmedia.com", "prueba")
       .then((userCredentials) => {
         this.user = userCredentials.user;
         this.router.navigate(['/inicio']);
       })
       .catch((error) => {
-        console.log(error.code)
         switch (error.code) {
           case 'auth/invalid-email':
             this.formErrors.passwordError = '';

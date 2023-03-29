@@ -1,9 +1,19 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>documents</ion-title>
+<ion-header class="documents-header">
+  <ion-toolbar class="documents-toolbar">
+    <ion-title>Documentos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content [fullscreen]="true" class="container">
+  <ion-list lines="none" class="documents-list-container">
+    <ion-item *ngFor="let document of docsList" class="documents-list">
+      <div class="list-item">
+        <span class="document-name">{{document.name}}</span>
+        <div class="documents-icon-wrapper">
+          <button><img src="../../../assets/img/documents/download.png" alt="Descargar documento" width="20px" class="documents-list-img"></button>
+          <button><img src="../../../assets/img/documents/view.png" alt="Visualizar documento" width="20px" class="documents-list-img"></button>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -19,8 +19,7 @@ export class InicioPage implements OnInit {
     const app = initializeApp(environment.firebaseConfig);
     const auth = getAuth(app);
     const user = auth.currentUser
-    console.log(user);
-    
+
   }
 
     logout() {
