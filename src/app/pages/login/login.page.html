@@ -1,14 +1,37 @@
 <ion-content>
   <div class="container">
     <div class="form-container">
-      <img src="../../../assets/img/login/logo-coco.svg" alt="COCOGLOBALMEDIA" width="100%" />
+      <img
+        src="../../../assets/img/login/logo-coco.svg"
+        alt="COCOGLOBALMEDIA"
+        width="100%"
+      />
 
-      <form action="" method="post">
+      <form #loginForm="ngForm" (ngSubmit)="login()">
         <div class="login-form">
-          <ion-input class="input-content" placeholder="Email"></ion-input>
-          <ion-input class="input-content" placeholder="Password"></ion-input>
+          <ion-input
+            class="input-content"
+            placeholder="Email"
+            id="email"
+            name="email"
+            [(ngModel)]="userFormData.email"
+            required
+          ></ion-input>
+          <span class="error-form-message" *ngIf="formErrors.emailError">{{formErrors.emailError}}</span>
+          <ion-input
+            class="input-content"
+            placeholder="Contraseña"
+            id="password"
+            name="password"
+            [(ngModel)]="userFormData.password"
+            type="password"
+            required
+          ></ion-input>
+          <span class="error-form-message" *ngIf="formErrors.passwordError">{{formErrors.passwordError}}</span>
           <div class="input-wrapper">
-            <ion-button class="submit-content" shape="round">CONTINUAR</ion-button>
+            <ion-button class="submit-content" shape="round" type="submit"
+              >CONTINUAR</ion-button
+            >
           </div>
         </div>
       </form>

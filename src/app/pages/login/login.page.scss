@@ -31,6 +31,11 @@ ion-content {
         gap: 1.5rem;
         width: 100%;
 
+        .error-form-message {
+          color: rgb(187, 0, 0);
+          font-size: 0.8rem;
+        }
+
         .input-content {
           width: 100%;
           border-bottom: 1px solid #5F5F5F;
