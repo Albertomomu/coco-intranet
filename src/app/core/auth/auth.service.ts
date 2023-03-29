@@ -14,7 +14,4 @@ export class AuthService {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     return userCredential.user;
   }
-
-
-
 }
