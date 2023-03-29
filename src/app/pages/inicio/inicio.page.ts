@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+import { AuthService } from 'src/app/core/auth/auth.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -10,7 +12,7 @@ import { environment } from 'src/environments/environment';
 })
 export class InicioPage implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private auth: AuthService) { }
 
   ngOnInit() {
 
@@ -20,5 +22,10 @@ export class InicioPage implements OnInit {
     console.log(user);
     
   }
+
+    logout() {
+      this.auth.signOut();
+      this.router.navigate(["/home"]);
+    }
 
 }
