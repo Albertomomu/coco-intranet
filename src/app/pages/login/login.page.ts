@@ -20,7 +20,7 @@ export class LoginPage implements OnInit {
     passwordError: '',
   };
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -40,9 +40,10 @@ export class LoginPage implements OnInit {
       .login(this.userFormData.email, this.userFormData.password)
       .then((userCredentials) => {
         this.user = userCredentials.user;
-        console.log(this.user);
+        this.router.navigate(['/inicio']);
       })
       .catch((error) => {
+        console.log(error.code)
         switch (error.code) {
           case 'auth/invalid-email':
             this.formErrors.passwordError = '';
@@ -57,6 +58,11 @@ export class LoginPage implements OnInit {
           case 'auth/internal-error':
             this.formErrors.emailError = '';
             this.formErrors.passwordError = 'Contraseña inválida';
+            break;
+
+          case 'auth/user-not-found':
+            this.formErrors.passwordError = '';
+            this.formErrors.emailError = 'Email inválido';
             break;
         }
       });
