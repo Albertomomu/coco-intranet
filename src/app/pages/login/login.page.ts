@@ -28,7 +28,7 @@ export class LoginPage implements OnInit {
     /* try {
       const user = await this.auth.login(this.user.email, this.user.password);
       this.user = user;
-      console.log(this.user)
+      this.router.navigate(["/inicio"])
       // update your UI to reflect the logged-in state
     } catch (error) {
       this.errorMessage = error;
