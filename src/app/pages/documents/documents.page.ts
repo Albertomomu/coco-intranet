@@ -48,7 +48,7 @@ export class DocumentsPage implements OnInit {
         directory: Directory.Documents,
       }).then(() => {
         console.log(`El documento ${documentName} se ha descargado correctamente`);
-      }).catch((error) => {
+      }).catch((error: any) => {
         console.error(`Error al descargar el documento: ${error}`);
       });
     };
