@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { getDownloadURL } from 'firebase/storage';
 import { DocumentsService } from 'src/app/core/services/documents.service';
+import { Browser } from '@capacitor/browser';
+
 
 @Component({
   selector: 'app-documents',
@@ -17,14 +19,17 @@ export class DocumentsPage implements OnInit {
     this.getDocs()
   }
 
-  getDocs(){
+  openDocument(documentUrl: string): void {
+    Browser.open({ url: documentUrl });
+  }
+
+  getDocs() {
     this.docs.getDocs().then(async responseList => {
-      for(const item of responseList.items){
+      for (const item of responseList.items) {
         const name = item.name;
-          const url = await getDownloadURL(item);
-          this.docsList.push({name, url});
+        const url = await getDownloadURL(item);
+        this.docsList.push({ name, url });
       }
-      console.log(this.docsList)
     })
   }
 

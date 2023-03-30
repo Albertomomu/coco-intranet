@@ -8,9 +8,10 @@
   <ion-list lines="none" class="documents-list-container">
     <ion-item *ngFor="let document of docsList" class="documents-list">
       <div class="list-item">
-        <span class="document-name">{{document.name}}</span>
+        <span class="document-name" (click)="openDocument(document.url)">{{document.name}}</span>
         <div class="documents-icon-wrapper">
-          <button><img src="../../../assets/img/documents/download.png" alt="Descargar documento" width="20px" class="documents-list-img"></button>
+          <button><img src="../../../assets/img/documents/download.png" alt="Descargar documento" width="20px"
+              class="documents-list-img"></button>
         </div>
       </div>
     </ion-item>
