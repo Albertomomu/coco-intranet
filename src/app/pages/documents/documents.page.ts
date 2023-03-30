@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { getDownloadURL } from 'firebase/storage';
 import { DocumentsService } from 'src/app/core/services/documents.service';
 import { Browser } from '@capacitor/browser';
+import { Filesystem, Directory } from '@capacitor/filesystem';
+import * as cors from 'cors';
 
 
 @Component({
@@ -32,5 +34,25 @@ export class DocumentsPage implements OnInit {
       }
     })
   }
+
+  async downloadDocument(documentUrl: string, documentName: string): Promise<void> {
+    const response = await fetch(documentUrl);
+    const blob = await response.blob();
+    const reader = new FileReader();
+    reader.readAsDataURL(blob);
+    reader.onloadend = () => {
+      const base64data = reader.result!.toString();
+      Filesystem.writeFile({
+        path: documentName,
+        data: base64data,
+        directory: Directory.Documents,
+      }).then(() => {
+        console.log(`El documento ${documentName} se ha descargado correctamente`);
+      }).catch((error) => {
+        console.error(`Error al descargar el documento: ${error}`);
+      });
+    };
+  }
+
 
 }
