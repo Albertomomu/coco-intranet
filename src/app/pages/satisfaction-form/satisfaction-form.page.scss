@@ -25,19 +25,37 @@
     }
 
     .checkbox-wrapper {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
       color: #3a3a3a;
 
-      .checkbox-container {
+      .radio-container {
         display: flex;
         align-items: center;
       }
 
-      ion-checkbox {
-        --size: 1rem;
-        margin: 1rem;
+      ion-radio-group {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        color: #3a3a3a;
+        ion-radio {
+          margin: 1rem;
+          --border-radius: 4px;
+          --inner-border-radius: 4px;
+          --color-checked: #3880FF;
+          --color: #ddd;
+        }
+
+        ion-radio.ios::part(container) {
+            width: 20px;
+            height: 20px;
+          
+            border: 2px solid #ddd;
+            border-radius: 4px;
+          }
+
+          .radio-checked.ios::part(container) {
+            border-color: #3880FF;
+          }
       }
     }
   }

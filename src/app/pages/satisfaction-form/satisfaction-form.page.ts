@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SatisfactionFormPage implements OnInit {
 
-  
+  satisfactionFormData = {
+    serviceSatisfaction: '',
+    expectatives: '',
+    clientService: '',
+    overallExperience: '',
+    recommendation: ''
+  }
 
   constructor() { }
 
@@ -15,7 +21,7 @@ export class SatisfactionFormPage implements OnInit {
   }
 
   submitSatisfaction() {
-
+    console.log(this.satisfactionFormData);
   }
 
 }
