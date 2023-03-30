@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>satisfaction-form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="form-container">
+      <form #satisfactionForm="ngForm" (ngSubmit)="submitSatisfaction()">
+        <div class="login-form">
+          <div>
+            <ion-label
+              >¿Cuál es tu grado de satisfacción con nuestros servicios de
+              marketing digital?</ion-label
+            >
+            <ion-range
+              aria-label="Range with ticks"
+              [ticks]="true"
+              [snaps]="true"
+              [min]="0"
+              [max]="5"
+              [pin]="true"
+              name="service-satisfaction"
+            ></ion-range>
+          </div>
+
+          <div>
+            <ion-label
+              >¿Hemos cumplido tus expectativas en cuanto a
+              resultados?</ion-label
+            >
+            <ion-textarea
+              label="Regular textarea"
+              placeholder="Escribe aquí tu opinión"
+              name="expectatives"
+            ></ion-textarea>
+          </div>
+
+          <div>
+            <ion-label
+              >¿Cómo calificarías la calidad de nuestro servicio al
+              cliente?</ion-label
+            >
+            <ion-range
+              aria-label="Range with ticks"
+              [ticks]="true"
+              [snaps]="true"
+              [min]="0"
+              [max]="5"
+              [pin]="true"
+              name="client-service"
+            ></ion-range>
+          </div>
+
+          <div>
+            <ion-label
+              >¿Recomendarías nuestros servicios de marketing digital a
+              otros?</ion-label
+            >
+            <div class="checkbox-wrapper">
+              <div class="checkbox-container">
+                <ion-label>Sí</ion-label>
+                <ion-checkbox></ion-checkbox>
+              </div>
+              <div class="checkbox-container">
+                <ion-label>No</ion-label>
+                <ion-checkbox></ion-checkbox>
+              </div>
+              <div class="checkbox-container">
+                <ion-label>No lo se</ion-label>
+                <ion-checkbox></ion-checkbox>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <ion-label
+              >¿Cuál ha sido tu experiencia general con nuestra
+              empresa?</ion-label
+            >
+            <ion-textarea
+              label="Regular textarea"
+              placeholder="Escribe aquí tu opinión"
+              name="overall-experience"
+            ></ion-textarea>
+          </div>
+
+          <div class="input-wrapper">
+            <ion-button class="submit-content" shape="round" type="submit"
+              >ENVIAR</ion-button
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

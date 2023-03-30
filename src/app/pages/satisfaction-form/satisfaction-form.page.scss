@@ -1,0 +1,44 @@
+.container {
+  --background: #fafafa;
+  font-size: 0.85rem;
+  font-family: "Dosis";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+
+  .form-container {
+    width: 90%;
+
+    ion-textarea {
+      font-size: 0.85rem;
+      font-family: "Dosis";
+    }
+
+    .submit-content {
+      width: 100%;
+    }
+
+    ion-range {
+      --knob-size: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .checkbox-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      color: #3a3a3a;
+
+      .checkbox-container {
+        display: flex;
+        align-items: center;
+      }
+
+      ion-checkbox {
+        --size: 1rem;
+        margin: 1rem;
+      }
+    }
+  }
+}
