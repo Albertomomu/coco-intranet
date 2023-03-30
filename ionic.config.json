@@ -1,7 +1,12 @@
 {
   "name": "coco-intranet",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "proxy": {
+      "proxyUrl": "https://myserver.com",
+      "path": "/api",
+      "rejectUnauthorized": true
+    }
   },
   "type": "angular"
 }
