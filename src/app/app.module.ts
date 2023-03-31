@@ -9,6 +9,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from 'src/environments/environment';
 
+import {File} from '@awesome-cordova-plugins/file/ngx'
+import {DocumentViewer} from '@awesome-cordova-plugins/document-viewer/ngx'
+import {FileTransfer} from '@awesome-cordova-plugins/file-transfer/ngx'
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -18,7 +22,11 @@ import { environment } from 'src/environments/environment';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+              File,
+              FileTransfer,
+              DocumentViewer
+              ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

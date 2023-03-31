@@ -3,7 +3,7 @@ import { getDownloadURL } from 'firebase/storage';
 import { DocumentsService } from 'src/app/core/services/documents.service';
 import { Browser } from '@capacitor/browser';
 import { Filesystem, Directory } from '@capacitor/filesystem';
-import * as cors from 'cors';
+import { DocumentViewer, DocumentViewerOptions } from '@awesome-cordova-plugins/document-viewer/ngx';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class DocumentsPage implements OnInit {
 
   docsList: any = [];
 
-  constructor(private docs: DocumentsService) { }
+  constructor(private docs: DocumentsService, private document: DocumentViewer) { }
 
   ngOnInit() {
     this.getDocs()
@@ -23,6 +23,13 @@ export class DocumentsPage implements OnInit {
 
   openDocument(documentUrl: string): void {
     Browser.open({ url: documentUrl });
+  }
+
+  openDocuments(documentUrl: string): void {
+    const options: DocumentViewerOptions = {
+      title: 'file'
+    }
+    this.document.viewDocument(documentUrl, 'application/pdf', options)
   }
 
   getDocs() {
