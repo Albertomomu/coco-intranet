@@ -24,6 +24,7 @@
     "@awesome-cordova-plugins/document-viewer": "^6.3.0",
     "@awesome-cordova-plugins/file": "^6.3.0",
     "@awesome-cordova-plugins/file-transfer": "^6.3.0",
+    "@capacitor-community/http": "^1.4.1",
     "@capacitor/android": "4.7.1",
     "@capacitor/app": "4.1.1",
     "@capacitor/browser": "^4.1.1",
