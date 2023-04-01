@@ -1,3 +1,6 @@
+import { initialize } from "@ionic/core";
+import { initializeApp } from "firebase/app";
+
 export const environment = {
   production: true,
   firebaseConfig: {
@@ -10,3 +13,4 @@ export const environment = {
     measurementId: "G-VSSRBYL57E"
   }
 };
+initializeApp(environment.firebaseConfig);
