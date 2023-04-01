@@ -22,9 +22,14 @@ const routes: Routes = [
   {
     path: 'documents',
     loadChildren: () => import('./pages/documents/documents.module').then( m => m.DocumentsPageModule)
-  },  {
+  },
+  {
     path: 'satisfaction-form',
     loadChildren: () => import('./pages/satisfaction-form/satisfaction-form.module').then( m => m.SatisfactionFormPageModule)
+  },
+  {
+    path: 'document-viewer/:documentUrl',
+    loadChildren: () => import('./pages/document-viewer/document-viewer.module').then( m => m.DocumentViewerPageModule)
   },
 
 ];

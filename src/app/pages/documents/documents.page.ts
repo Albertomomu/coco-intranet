@@ -4,6 +4,7 @@ import { DocumentsService } from 'src/app/core/services/documents.service';
 import { Browser } from '@capacitor/browser';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { DocumentViewer, DocumentViewerOptions } from '@awesome-cordova-plugins/document-viewer/ngx';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class DocumentsPage implements OnInit {
 
   docsList: any = [];
 
-  constructor(private docs: DocumentsService, private document: DocumentViewer) { }
+  constructor(private docs: DocumentsService, private document: DocumentViewer, private router: Router) { }
 
   ngOnInit() {
     this.getDocs()
@@ -23,6 +24,10 @@ export class DocumentsPage implements OnInit {
 
   openDocument(documentUrl: string): void {
     Browser.open({ url: documentUrl });
+  }
+
+  openDocument1(documentUrl: string): void {
+    this.router.navigate(['/document-viewer', documentUrl])
   }
 
   openDocuments(documentUrl: string): void {
@@ -36,6 +41,7 @@ export class DocumentsPage implements OnInit {
     this.docs.getDocs().then(async responseList => {
       for (const item of responseList.items) {
         const name = item.name;
+        console.log(item)
         const url = await getDownloadURL(item);
         this.docsList.push({ name, url });
       }

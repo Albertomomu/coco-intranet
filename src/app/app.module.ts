@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import {File} from '@awesome-cordova-plugins/file/ngx'
 import {DocumentViewer} from '@awesome-cordova-plugins/document-viewer/ngx'
 import {FileTransfer} from '@awesome-cordova-plugins/file-transfer/ngx'
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import {FileTransfer} from '@awesome-cordova-plugins/file-transfer/ngx'
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    PdfViewerModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
               File,
