@@ -1,6 +1,5 @@
 ion-content {
-  --background: url("../../../assets/img/login/background.png") 0 0/100% 100%
-    no-repeat;
+  --background: url("../../../assets/img/login/background.png") 0 0/100% 100% no-repeat;
 
   .container {
     height: 100vh;
@@ -51,6 +50,7 @@ ion-content {
 
           .submit-content {
             width: 100%;
+            font-family: "Dosis";
           }
         }
       }

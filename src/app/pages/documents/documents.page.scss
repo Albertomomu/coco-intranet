@@ -5,6 +5,7 @@
 
   .documents-list-container {
     --background: #FAFAFA;
+
     .documents-list {
       --background: #FAFAFA;
 
@@ -12,9 +13,11 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         --background: #FAFAFA;
         color: #3a3a3a;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
+        cursor: pointer;
 
         .document-name {
           width: 90%;
@@ -43,5 +46,6 @@
     color: #3a3a3a;
     font-size: 0.8rem;
   }
+
   border: none;
 }
