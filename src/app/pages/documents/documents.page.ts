@@ -5,7 +5,7 @@ import { Browser } from '@capacitor/browser';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Http } from "@capacitor-community/http"
 import { Router } from '@angular/router';
-
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-documents',
@@ -16,7 +16,7 @@ export class DocumentsPage implements OnInit {
 
   docsList: any = [];
 
-  constructor(private docs: DocumentsService, private router: Router) { }
+  constructor(private docs: DocumentsService, private router: Router, private toastController: ToastController) { }
 
   ngOnInit() {
     this.getDocs()
@@ -26,6 +26,16 @@ export class DocumentsPage implements OnInit {
   /*openDocument(documentUrl: string): void {
     Browser.open({ url: documentUrl });
   }*/
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Hello World!',
+      duration: 1500,
+      position: 'top'
+    });
+
+    await toast.present();
+  }
 
   openDocument(documentUrl: string): void {
     this.router.navigate(['/document-viewer', documentUrl])
@@ -48,6 +58,7 @@ export class DocumentsPage implements OnInit {
       url: documentUrl,
       filePath: `${Directory.Documents}/${documentName}`
     }).then(async (entry) => {
+      this.presentToast();
       console.log(`${Directory.Documents}/${documentName}`)
       /*const alert = await this.alertCtrl.create({
         header: 'Archivo descargado',
@@ -84,8 +95,10 @@ export class DocumentsPage implements OnInit {
       });
 
       console.log(`Archivo descargado en ${filePath}`);
+      this.presentToast();
     } catch (error) {
       console.log(`Error al descargar el archivo: ${error}`);
+      this.presentToast();
     }
   }
 }
