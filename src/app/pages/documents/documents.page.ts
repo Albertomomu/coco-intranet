@@ -85,7 +85,7 @@ export class DocumentsPage implements OnInit {
 
       console.log(`Archivo descargado en ${filePath}`);
     } catch (error) {
-      console.log(`Error al descargar el archivo: ${error}`);
+      console.log(`Error al descargar el archivo: ${error}`); 
     }
   }
 }
