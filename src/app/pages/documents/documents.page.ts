@@ -3,10 +3,8 @@ import { getDownloadURL } from 'firebase/storage';
 import { DocumentsService } from 'src/app/core/services/documents.service';
 import { Browser } from '@capacitor/browser';
 import { Filesystem, Directory } from '@capacitor/filesystem';
-import {Http} from "@capacitor-community/http"
-import { DocumentViewer, DocumentViewerOptions } from '@awesome-cordova-plugins/document-viewer/ngx';
+import { Http } from "@capacitor-community/http"
 import { Router } from '@angular/router';
-import { fileURLToPath } from 'url';
 
 
 @Component({
@@ -18,32 +16,25 @@ export class DocumentsPage implements OnInit {
 
   docsList: any = [];
 
-  constructor(private docs: DocumentsService, private document: DocumentViewer, private router: Router) { }
+  constructor(private docs: DocumentsService, private router: Router) { }
 
   ngOnInit() {
     this.getDocs()
   }
 
-  openDocument(documentUrl: string): void {
+  // BROWSER OPTION -> In some browsers it justs dowloads the file
+  /*openDocument(documentUrl: string): void {
     Browser.open({ url: documentUrl });
-  }
+  }*/
 
-  openDocument1(documentUrl: string): void {
+  openDocument(documentUrl: string): void {
     this.router.navigate(['/document-viewer', documentUrl])
-  }
-
-  openDocuments(documentUrl: string): void {
-    const options: DocumentViewerOptions = {
-      title: 'file'
-    }
-    this.document.viewDocument(documentUrl, 'application/pdf', options)
   }
 
   getDocs() {
     this.docs.getDocs().then(async responseList => {
       for (const item of responseList.items) {
         const name = item.name;
-        console.log(item)
         const url = await getDownloadURL(item);
         this.docsList.push({ name, url });
       }
@@ -52,7 +43,7 @@ export class DocumentsPage implements OnInit {
 
 
   downloadFile(documentUrl: string, documentName: string) {
-    
+
     Http.downloadFile({
       url: documentUrl,
       filePath: `${Directory.Documents}/${documentName}`
