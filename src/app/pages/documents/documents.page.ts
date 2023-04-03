@@ -15,6 +15,7 @@ import { ToastController } from '@ionic/angular';
 export class DocumentsPage implements OnInit {
 
   docsList: any = [];
+  docsListFormatted: any = []
 
   constructor(private docs: DocumentsService, private router: Router, private toastController: ToastController) { }
 
@@ -48,6 +49,19 @@ export class DocumentsPage implements OnInit {
         const url = await getDownloadURL(item);
         this.docsList.push({ name, url });
       }
+      this.docsList.map(doc => {
+        let visibility = false;
+        if (doc.name.endsWith('.pdf')) {
+          visibility = true;
+        }
+        const docFormatted = {
+          name: doc.name,
+          url: doc.url,
+          visibility
+        }
+        this.docsListFormatted.push(docFormatted)
+      })
+      console.log(this.docsListFormatted)
     })
   }
 
