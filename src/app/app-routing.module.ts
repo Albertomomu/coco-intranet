@@ -35,12 +35,6 @@ const routes: Routes = [
     path: 'satisfaction-form-success',
     loadChildren: () => import('./pages/satisfaction-form-success/satisfaction-form-success.module').then( m => m.SatisfactionFormSuccessPageModule)
   },
-  {
-    path: 'satisfaction-form-success',
-    loadChildren: () => import('./pages/satisfaction-form-success/satisfaction-form-success.module').then( m => m.SatisfactionFormSuccessPageModule)
-  },
-
-
 ];
 
 @NgModule({
