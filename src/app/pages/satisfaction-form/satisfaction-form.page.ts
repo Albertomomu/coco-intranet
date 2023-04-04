@@ -18,6 +18,10 @@ export class SatisfactionFormPage implements OnInit {
     return this.satisfactionForm.get("overallExperience");
   }
 
+  get recommendation() {
+    return this.satisfactionForm.get("recommendation");
+  }
+
   constructor(private formBuilder: FormBuilder, private router: Router) {
     this.buildForm();
   }
@@ -50,7 +54,8 @@ export class SatisfactionFormPage implements OnInit {
 
   submitSatisfaction() {
     if (!this.satisfactionForm.valid) {
-      console.error('Formulario inválido.');
+      this.satisfactionForm.markAllAsTouched();
+      this.satisfactionForm.markAsDirty();
       return;
     }
     console.warn(this.satisfactionForm.value);
