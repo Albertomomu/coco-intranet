@@ -10,7 +10,14 @@
   .form-container {
     width: 90%;
 
+    .error-message {
+      font-size: 0.85rem;
+      color: #FF3823;
+      margin-bottom: 1rem;
+    }
+
     ion-textarea {
+      height: 2rem;
       font-size: 0.85rem;
       font-family: "Dosis";
     }
