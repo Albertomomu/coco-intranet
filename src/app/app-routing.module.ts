@@ -30,9 +30,14 @@ const routes: Routes = [
   {
     path: 'document-viewer/:documentUrl',
     loadChildren: () => import('./pages/document-viewer/document-viewer.module').then( m => m.DocumentViewerPageModule)
-  },  {
+  },
+  {
     path: 'satisfaction-form-success',
-    loadChildren: () => import('./satisfaction-form-success/satisfaction-form-success.module').then( m => m.SatisfactionFormSuccessPageModule)
+    loadChildren: () => import('./pages/satisfaction-form-success/satisfaction-form-success.module').then( m => m.SatisfactionFormSuccessPageModule)
+  },
+  {
+    path: 'satisfaction-form-success',
+    loadChildren: () => import('./pages/satisfaction-form-success/satisfaction-form-success.module').then( m => m.SatisfactionFormSuccessPageModule)
   },
 
 
