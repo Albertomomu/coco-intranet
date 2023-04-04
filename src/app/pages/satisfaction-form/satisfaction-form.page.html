@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>satisfaction-form</ion-title>
+    <ion-title>Danos tu opinión</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="container">
     <div class="form-container">
-      <form #satisfactionForm="ngForm" (ngSubmit)="submitSatisfaction()">
+      <form [formGroup]="satisfactionForm">
         <div class="login-form">
           <div>
             <ion-label
@@ -21,8 +21,7 @@
               [min]="0"
               [max]="5"
               [pin]="true"
-              name="service-satisfaction"
-              [(ngModel)]="satisfactionFormData.serviceSatisfaction"
+              formControlName="serviceSatisfaction"
             ></ion-range>
           </div>
 
@@ -34,9 +33,9 @@
             <ion-textarea
               label="Regular textarea"
               placeholder="Escribe aquí tu opinión"
-              name="expectatives"
-              [(ngModel)]="satisfactionFormData.expectatives"
+              formControlName="expectatives"
             ></ion-textarea>
+            <span *ngIf="satisfactionForm.controls['expectatives'].invalid && (satisfactionForm.controls['expectatives'].dirty || satisfactionForm.controls['expectatives'].touched)" class="error-message">Introduce al menos 10 caracteres</span>
           </div>
 
           <div>
@@ -51,8 +50,7 @@
               [min]="0"
               [max]="5"
               [pin]="true"
-              name="client-service"
-              [(ngModel)]="satisfactionFormData.clientService"
+              formControlName="clientService"
             ></ion-range>
           </div>
 
@@ -62,7 +60,7 @@
               otros?</ion-label
             >
             <div class="checkbox-wrapper">
-              <ion-radio-group name="recommendation" [(ngModel)]="satisfactionFormData.recommendation">
+              <ion-radio-group formControlName="recommendation">
                 <div class="radio-container">
                   <ion-label>Sí</ion-label>
                   <ion-radio value="yes"></ion-radio>
@@ -76,18 +74,6 @@
                   <ion-radio value="dunno"></ion-radio>
                 </div>
               </ion-radio-group>
-              <!-- <div class="checkbox-container">
-                <ion-label>Sí</ion-label>
-                <ion-checkbox></ion-checkbox>
-              </div>
-              <div class="checkbox-container">
-                <ion-label>No</ion-label>
-                <ion-checkbox></ion-checkbox>
-              </div>
-              <div class="checkbox-container">
-                <ion-label>No lo se</ion-label>
-                <ion-checkbox></ion-checkbox>
-              </div> -->
             </div>
           </div>
 
@@ -99,9 +85,9 @@
             <ion-textarea
               label="Regular textarea"
               placeholder="Escribe aquí tu opinión"
-              name="overall-experience"
-              [(ngModel)]="satisfactionFormData.overallExperience"
+              formControlName="overallExperience"
             ></ion-textarea>
+            <span *ngIf="satisfactionForm.controls['overallExperience'].invalid && (satisfactionForm.controls['overallExperience'].dirty || satisfactionForm.controls['overallExperience'].touched)" class="error-message">Introduce al menos 10 caracteres</span>
           </div>
 
           <div class="input-wrapper">
