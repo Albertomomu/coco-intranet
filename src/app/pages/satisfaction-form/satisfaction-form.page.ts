@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-satisfaction-form',
@@ -17,7 +18,7 @@ export class SatisfactionFormPage implements OnInit {
     return this.satisfactionForm.get("overallExperience");
   }
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
     this.buildForm();
   }
 
@@ -48,6 +49,12 @@ export class SatisfactionFormPage implements OnInit {
   }
 
   submitSatisfaction() {
-    console.log('asdasd');
+    if (!this.satisfactionForm.valid) {
+      console.error('Formulario inválido.');
+      return;
+    }
+    console.warn(this.satisfactionForm.value);
+    //AQUI VA EL BACKEND
+    this.router.navigate(["/satisfaction-form-success"]);
   }
 }
