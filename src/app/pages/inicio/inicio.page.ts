@@ -26,8 +26,6 @@ export class InicioPage implements OnInit {
     const auth = getAuth(app);
     const user = auth.currentUser
 
-    console.log('Initializing HomePage');
-
     // Request permission to use push notifications
     // iOS will prompt user and return if they granted permission or not
     // Android will just grant without prompting

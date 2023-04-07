@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormsService } from 'src/app/core/services/forms.service';
 
 @Component({
   selector: 'app-satisfaction-form',
@@ -22,11 +23,12 @@ export class SatisfactionFormPage implements OnInit {
     return this.satisfactionForm.get("recommendation");
   }
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private formsService: FormsService) {
     this.buildForm();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   buildForm() {
     this.satisfactionForm = this.formBuilder.group({
@@ -58,8 +60,10 @@ export class SatisfactionFormPage implements OnInit {
       this.satisfactionForm.markAsDirty();
       return;
     }
+
     console.warn(this.satisfactionForm.value);
     //AQUI VA EL BACKEND
+    this.formsService.submitForm(this.satisfactionForm.value);
     this.router.navigate(["/satisfaction-form-success"]);
   }
 }
