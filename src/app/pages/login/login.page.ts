@@ -39,6 +39,7 @@ export class LoginPage implements OnInit {
     this.auth
       .login("prueba@cocoglobalmedia.com", "prueba")
       .then((userCredentials) => {
+
         this.user = userCredentials.user;
         this.router.navigate(['/inicio']);
       })
