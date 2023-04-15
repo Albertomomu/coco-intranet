@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { Router } from '@angular/router';
+import { getFirestore } from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 
 @Component({
   selector: 'app-login',
@@ -28,8 +30,7 @@ export class LoginPage implements OnInit {
     this.auth
       .login('prueba@cocoglobalmedia.com', 'prueba')
       .then((userCredentials) => {
-        this.user = userCredentials.user;
-        this.router.navigate(['/inicio']);
+        this.getUser(userCredentials.user.uid);
       })
       .catch((error) => {
         switch (error.code) {
@@ -54,5 +55,17 @@ export class LoginPage implements OnInit {
             break;
         }
       });
+  }
+  async getUser(uid) {
+    const db = getFirestore();
+
+    const docRef = doc(db, 'users', uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      this.user = docSnap.data();
+      this.router.navigate(['/inicio']);
+    } else {
+      console.log('El usuario no existe en la base de datos');
+    }
   }
 }
