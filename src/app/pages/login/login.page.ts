@@ -25,21 +25,9 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   async login() {
-    /* try {
-      const user = await this.auth.login(this.user.email, this.user.password);
-      this.user = user;
-      this.router.navigate(["/inicio"])
-      // update your UI to reflect the logged-in state
-    } catch (error) {
-      this.errorMessage = error;
-      console.log(error);
-      // update your UI to show the error message
-    } */
-
     this.auth
-      .login("prueba@cocoglobalmedia.com", "prueba")
+      .login('prueba@cocoglobalmedia.com', 'prueba')
       .then((userCredentials) => {
-
         this.user = userCredentials.user;
         this.router.navigate(['/inicio']);
       })

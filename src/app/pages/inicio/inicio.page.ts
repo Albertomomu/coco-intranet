@@ -24,7 +24,7 @@ export class InicioPage implements OnInit {
 
     const app = initializeApp(environment.firebaseConfig);
     const auth = getAuth(app);
-    const user = auth.currentUser
+
 
     // Request permission to use push notifications
     // iOS will prompt user and return if they granted permission or not

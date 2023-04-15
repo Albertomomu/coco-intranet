@@ -12,7 +12,7 @@ export class AuthService {
   async login(email: string, password: string): Promise<any> {
     const auth = getAuth();
     //const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    return await signInWithEmailAndPassword(auth, email, password);;
+    return await signInWithEmailAndPassword(auth, email, password);
   }
 
   async signOut(){
