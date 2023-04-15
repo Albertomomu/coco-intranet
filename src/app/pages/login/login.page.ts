@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/core/auth/auth.service';
 import { Router } from '@angular/router';
 import { getFirestore } from 'firebase/firestore';
 import { doc, getDoc } from 'firebase/firestore';
+import { IUser } from '../../core/interfaces/user';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginPage implements OnInit {
     password: '',
   };
 
-  user = {};
+  user: IUser;
 
   formErrors = {
     emailError: '',
@@ -62,8 +63,14 @@ export class LoginPage implements OnInit {
     const docRef = doc(db, 'users', uid);
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
-      this.user = docSnap.data();
-      this.router.navigate(['/inicio']);
+      this.user = docSnap.data() as IUser;
+      console.log(this.user);
+      if (this.user.isAdmin == true) {
+        this.router.navigate(['/admin-dashboard']); // should be changed to admin dashboard
+      } else {
+        this.router.navigate(['/inicio']);
+      }
+      //this.router.navigate(['/inicio']);
     } else {
       console.log('El usuario no existe en la base de datos');
     }

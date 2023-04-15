@@ -17,19 +17,16 @@ import {
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-
-  constructor(private router: Router, private auth: AuthService) { }
+  constructor(private router: Router, private auth: AuthService) {}
 
   ngOnInit() {
-
     const app = initializeApp(environment.firebaseConfig);
     const auth = getAuth(app);
-
 
     // Request permission to use push notifications
     // iOS will prompt user and return if they granted permission or not
     // Android will just grant without prompting
-    PushNotifications.requestPermissions().then(result => {
+    /*PushNotifications.requestPermissions().then(result => {
       if (result.receive === 'granted') {
         // Register with Apple / Google to receive push via APNS/FCM
         PushNotifications.register();
@@ -59,11 +56,11 @@ export class InicioPage implements OnInit {
         alert('Push action performed: ' + JSON.stringify(notification));
       },
     );
+  */
   }
 
-    logout() {
-      this.auth.signOut();
-      this.router.navigate(["/home"]);
-    }
-
+  logout() {
+    this.auth.signOut();
+    this.router.navigate(['/home']);
+  }
 }
