@@ -17,29 +17,13 @@ export class CreateUserPage implements OnInit {
 
   buildForm() {
     this.createUserForm = this.formBuilder.group({
-      serviceSatisfaction: [0, [Validators.required]],
-      expectatives: [
-        '',
-        [
-          Validators.minLength(10),
-          Validators.maxLength(20),
-          Validators.required,
-        ],
-      ],
-      clientService: [0, [Validators.required]],
-      recommendation: ['', [Validators.required]],
-      overallExperience: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(10),
-          Validators.maxLength(500),
-        ],
-      ],
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      logo: ['', [Validators.required]],
     });
   }
 
-  submitSatisfaction() {
+  submitUser() {
     if (!this.createUserForm.valid) {
       this.createUserForm.markAllAsTouched();
       this.createUserForm.markAsDirty();

@@ -12,18 +12,18 @@
       <form [formGroup]="createUserForm">
         <div class="form-container">
           <div class="form-input-container">
-            <ion-label>Nombre</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" formControlName="name" label="Nombre:"></ion-input>
+              <span *ngIf="createUserForm.controls['name'].invalid && (createUserForm.controls['name'].dirty || createUserForm.controls['name'].touched)" class="error-message">Introduce un nombre válido</span>
           </div>
           <div class="form-input-container">
-            <ion-label>Email</ion-label>
-            <ion-input type="email"></ion-input>
+            <ion-input type="email" formControlName="email" label="Email:"></ion-input>
+            <span *ngIf="createUserForm.controls['email'].invalid && (createUserForm.controls['email'].dirty || createUserForm.controls['email'].touched)" class="error-message">Introduce un email válido</span>
           </div>
           <div class="form-input-container">
-            <ion-label>Logotipo</ion-label>
-            <ion-input type="file"></ion-input>
+            <ion-input type="file" formControlName="logo" label="Logo:"></ion-input>
+            <span *ngIf="createUserForm.controls['logo'].invalid && (createUserForm.controls['logo'].dirty || createUserForm.controls['logo'].touched)" class="error-message">Debes enviar una imagen</span>
           </div>
-          <button class="inicio-buttons">Añadir</button>
+          <button class="inicio-buttons" (click)="submitUser()">Añadir</button>
         </div>
       </form>
     </div>
