@@ -4,15 +4,35 @@ ion-header{
 
 .container {
     --background: #FAFAFA;
+    font-family: "Dosis";
+    font-size: 18px;
 
-    .inicio-content {
+    .form-container {
+
         display: flex;
+        flex-direction: column;
+        padding: 10px;
+        gap: 1rem;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
-        height: 100%;
-        gap: 6rem;
 
-        
+        .form-input-container {
+            width: 100%;
+            ion-input {
+                border-bottom: 1px solid black;
+            }
+        }
+
+        .inicio-buttons {
+            padding: 20px 10px;
+            border-radius: 16px;
+            font-size: 1.3rem;
+            background-color: #3C4CA0;
+            color: white;
+            width: 90%;
+            font-family: "Dosis";
+            font-weight: 700;
+            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+        }
     }
 }

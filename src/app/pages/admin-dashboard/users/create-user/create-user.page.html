@@ -8,6 +8,24 @@
 </ion-header>
 <ion-content class="container"  [fullscreen]="true">
   <section class="inicio-content">
-    <p style="color: black;">Hello</p>
+    <div class="form-container">
+      <form [formGroup]="createUserForm">
+        <div class="form-container">
+          <div class="form-input-container">
+            <ion-label>Nombre</ion-label>
+            <ion-input type="text"></ion-input>
+          </div>
+          <div class="form-input-container">
+            <ion-label>Email</ion-label>
+            <ion-input type="email"></ion-input>
+          </div>
+          <div class="form-input-container">
+            <ion-label>Logotipo</ion-label>
+            <ion-input type="file"></ion-input>
+          </div>
+          <button class="inicio-buttons">Añadir</button>
+        </div>
+      </form>
+    </div>
   </section>
 </ion-content>
