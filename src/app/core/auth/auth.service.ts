@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
-import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  signOut,
+} from 'firebase/auth';
 import { from, Observable } from 'rxjs';
 
 @Injectable({
@@ -13,6 +18,11 @@ export class AuthService {
   async login(email: string, password: string): Promise<any> {
     const auth = getAuth();
     return await signInWithEmailAndPassword(auth, email, password);
+  }
+
+  async createUser(email, password) {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password);
   }
 
   isAuthenticated(): boolean {

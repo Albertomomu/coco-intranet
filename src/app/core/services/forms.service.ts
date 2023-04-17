@@ -3,30 +3,43 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
-import { getFirestore,collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FormsService {
-
   docs: any = [];
 
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService) {}
 
-  async submitForm(form){
+  async submitForm(form) {
     try {
       const formDated = {
         form: form,
-        date: new Date()
-      }
+        date: new Date(),
+      };
       const app = initializeApp(environment.firebaseConfig);
       const db = getFirestore(app);
       const user = getAuth(app);
-      const docRef = await addDoc(collection(db, user.currentUser.email), formDated);
-      console.log("Document written with ID: ", docRef.id);
+      const docRef = await addDoc(
+        collection(db, user.currentUser.email),
+        formDated
+      );
+      console.log('Document written with ID: ', docRef.id);
     } catch (e) {
-      console.error("Error adding document: ", e);
+      console.error('Error adding document: ', e);
+    }
+  }
+
+  async uploadUserForm(form) {
+    try {
+      const app = initializeApp(environment.firebaseConfig);
+      const db = getFirestore(app);
+      const docRef = await addDoc(collection(db, '/users'), form);
+      console.log('User saved in firestore: ');
+    } catch (e) {
+      console.error('Error adding document: ', e);
     }
   }
 }
