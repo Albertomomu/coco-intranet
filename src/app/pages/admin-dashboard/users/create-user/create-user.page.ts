@@ -19,6 +19,7 @@ export class CreateUserPage implements OnInit {
     this.createUserForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
       logo: ['', [Validators.required]],
     });
   }

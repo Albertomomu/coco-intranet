@@ -20,6 +20,10 @@
             <span *ngIf="createUserForm.controls['email'].invalid && (createUserForm.controls['email'].dirty || createUserForm.controls['email'].touched)" class="error-message">Introduce un email válido</span>
           </div>
           <div class="form-input-container">
+            <ion-input type="password" formControlName="password" label="Contraseña:"></ion-input>
+            <span *ngIf="createUserForm.controls['password'].invalid && (createUserForm.controls['password'].dirty || createUserForm.controls['password'].touched)" class="error-message">Introduce un email válido</span>
+          </div>
+          <div class="form-input-container">
             <ion-input type="file" formControlName="logo" label="Logo:"></ion-input>
             <span *ngIf="createUserForm.controls['logo'].invalid && (createUserForm.controls['logo'].dirty || createUserForm.controls['logo'].touched)" class="error-message">Debes enviar una imagen</span>
           </div>
