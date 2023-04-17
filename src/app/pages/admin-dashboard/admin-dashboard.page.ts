@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
+import { AuthService } from 'src/app/core/auth/auth.service';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.page.html',
@@ -9,7 +10,8 @@ import { ActionSheetController } from '@ionic/angular';
 export class AdminDashboardPage implements OnInit {
   constructor(
     private actionSheetController: ActionSheetController,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {}
 
   ngOnInit() {}
@@ -50,5 +52,9 @@ export class AdminDashboardPage implements OnInit {
       ],
     });
     await actionSheet.present();
+  }
+  logout() {
+    this.auth.signOut();
+    this.router.navigate(['/home']);
   }
 }
