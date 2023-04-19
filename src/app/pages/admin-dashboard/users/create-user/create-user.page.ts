@@ -11,11 +11,8 @@ import { FormsService } from 'src/app/core/services/forms.service';
 })
 export class CreateUserPage implements OnInit {
   createUserForm: FormGroup;
-<<<<<<< HEAD
   selectedFile: File;
-=======
-  fileName: String = "Seleccionar archivo";
->>>>>>> 40196918340a26e4f7118700c0913de6a5c00d1f
+  fileName: string;
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
@@ -44,7 +41,7 @@ export class CreateUserPage implements OnInit {
     if (event.target.files.length > 0) {
       this.fileName = event.target.files[0].name;
     } else {
-      this.fileName = "Seleccionar archivo";
+      this.fileName = 'Seleccionar archivo';
     }
   }
 
