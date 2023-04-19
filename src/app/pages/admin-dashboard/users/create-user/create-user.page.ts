@@ -12,7 +12,7 @@ import { FormsService } from 'src/app/core/services/forms.service';
 export class CreateUserPage implements OnInit {
   createUserForm: FormGroup;
   selectedFile: File;
-  fileName: string;
+  fileName: string = 'Seleccionar archivo';
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
