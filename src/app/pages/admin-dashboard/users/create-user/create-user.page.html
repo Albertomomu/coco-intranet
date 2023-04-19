@@ -63,6 +63,7 @@
             formControlName="logo"
             class="inputLogo transparent"
             style="opacity: 0; width: 0.1px; height: 0.1px"
+            (change)="onFileSelected($event)"
           />
           <span
             *ngIf="createUserForm.controls['logo'].invalid && (createUserForm.controls['logo'].dirty) || createUserForm.controls['logo'].touched"

@@ -10,6 +10,7 @@ import {
 } from 'firebase/storage';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
+import { setDoc, doc, getFirestore } from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +30,13 @@ export class DocumentsService {
       const docRef = ref(storage, email);
       return await listAll(docRef);
     }
+  }
+  async uploadDoc(email, document): Promise<any> {
+    const storage = getStorage();
+    const storageRef = ref(storage, `logos/${email}`);
+
+    uploadBytes(storageRef, document).then((snapshot) => {
+      console.log('Uploaded');
+    });
   }
 }

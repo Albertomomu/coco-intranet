@@ -33,10 +33,11 @@ export class FormsService {
   }
 
   async uploadUserForm(form) {
+    console.log(form);
     try {
       const app = initializeApp(environment.firebaseConfig);
       const db = getFirestore(app);
-      const docRef = await addDoc(collection(db, '/users'), form);
+      await addDoc(collection(db, '/users'), form);
       console.log('User saved in firestore: ');
     } catch (e) {
       console.error('Error adding document: ', e);
