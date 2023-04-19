@@ -43,6 +43,9 @@ ion-header {
 
       ion-button {
         font-family: "Dosis";
+        width: 100%;
+        margin: 0px;
+        margin-bottom: .5rem;
       }
 
       .transparent {
@@ -55,7 +58,7 @@ ion-header {
     }
 
     .error-message {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: #ff3823;
       margin-bottom: 1rem;
       font-family: "Dosis"; 

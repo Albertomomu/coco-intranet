@@ -10,6 +10,7 @@ import { FormsService } from 'src/app/core/services/forms.service';
 })
 export class CreateUserPage implements OnInit {
   createUserForm: FormGroup;
+  fileName: String = "Seleccionar archivo";
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
@@ -27,6 +28,14 @@ export class CreateUserPage implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       logo: ['', [Validators.required]],
     });
+  }
+
+  fileUpload(event) {
+    if (event.target.files.length > 0) {
+      this.fileName = event.target.files[0].name;
+    } else {
+      this.fileName = "Seleccionar archivo";
+    }
   }
 
   submitUser() {
