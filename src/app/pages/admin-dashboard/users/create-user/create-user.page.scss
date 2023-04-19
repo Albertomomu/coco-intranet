@@ -1,46 +1,70 @@
-ion-header{
-    --background: #FAFAFA; 
+ion-header {
+  --background: #fafafa;
 }
 
 .container {
-    --background: #FAFAFA;
-    font-family: "Dosis";
-    font-size: 18px;
-    height: 100%;
+  --background: #fafafa;
+  font-family: "Dosis";
+  font-size: 0.85rem;
+  display: flex;
+  justify-content: center;
+  gap: 10rem;
+  margin-top: 2rem;
+  color: #3a3a3a;
 
-    .form-container {
+  .form-container {
+    width: 90%;
 
-        display: flex;
-        flex-direction: column;
-        padding: 10px;
-        gap: 1rem;
-        justify-content: center;
-        align-items: center;
-
-        .form-input-container {
-            width: 100%;
-            ion-input {
-                border-bottom: 1px solid black;
-            }
-
-            .error-message {
-                font-size: 0.85rem;
-                color: #FF3823;
-                margin-bottom: 1rem;
-                }
-
-        }
-
-        .inicio-buttons {
-            padding: 20px 10px;
-            border-radius: 16px;
-            font-size: 1.3rem;
-            background-color: #3C4CA0;
-            color: white;
-            width: 90%;
-            font-family: "Dosis";
-            font-weight: 700;
-            box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-        }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
+
+    ion-label {
+        font-family: "Dosis"; 
+      color: #3a3a3a;
+    }
+
+    ion-input:not([type="file"]) {
+      border-bottom: 1px solid #9b9b9b;
+      font-family: "Dosis"; 
+    }
+
+    .file-wrapper {
+      display: flex;
+      flex-direction: column;
+
+      ion-label {
+        font-size: 0.85rem;
+        color: #3a3a3a;
+        margin-bottom: 1rem;
+      }
+
+      ion-button {
+        font-family: "Dosis";
+      }
+
+      .transparent {
+        color: rgba(0, 0, 0, 0);
+      }
+
+      .visible {
+        color: #3a3a3a;
+      }
+    }
+
+    .error-message {
+      font-size: 0.85rem;
+      color: #ff3823;
+      margin-bottom: 1rem;
+      font-family: "Dosis"; 
+    }
+
+    .submit-content {
+      width: 100%;
+      margin: 0px;
+      font-family: "Dosis"; 
+    }
+  }
 }

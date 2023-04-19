@@ -6,30 +6,79 @@
     <ion-title>Añadir usuario</ion-title>
   </ion-toolbar>
 </ion-header>
-<ion-content class="container"  [fullscreen]="true">
-  <section class="inicio-content">
+
+<ion-content class="container" [fullscreen]="true">
+  <div class="container">
     <div class="form-container">
       <form [formGroup]="createUserForm">
-        <div class="form-container">
-          <div class="form-input-container">
-            <ion-input type="text" formControlName="name" label="Nombre:"></ion-input>
-              <span *ngIf="createUserForm.controls['name'].invalid && (createUserForm.controls['name'].dirty || createUserForm.controls['name'].touched)" class="error-message">Introduce un nombre válido</span>
-          </div>
-          <div class="form-input-container">
-            <ion-input type="email" formControlName="email" label="Email:"></ion-input>
-            <span *ngIf="createUserForm.controls['email'].invalid && (createUserForm.controls['email'].dirty || createUserForm.controls['email'].touched)" class="error-message">Introduce un email válido</span>
-          </div>
-          <div class="form-input-container">
-            <ion-input type="password" formControlName="password" label="Contraseña:"></ion-input>
-            <span *ngIf="createUserForm.controls['password'].invalid && (createUserForm.controls['password'].dirty || createUserForm.controls['password'].touched)" class="error-message">Introduce una contraseña de 6 carácteres o más</span>
-          </div>
-          <div class="form-input-container">
-            <ion-input type="file" formControlName="logo" label="Logo:"></ion-input>
-            <span *ngIf="createUserForm.controls['logo'].invalid && (createUserForm.controls['logo'].dirty || createUserForm.controls['logo'].touched)" class="error-message">Debes enviar una imagen</span>
-          </div>
-          <button class="inicio-buttons" (click)="submitUser()">Añadir</button>
+        <div>
+          <ion-input
+            type="text"
+            formControlName="name"
+            label="Nombre"
+            labelPlacement="floating"
+          ></ion-input>
+          <span
+            *ngIf="createUserForm.controls['name'].invalid && (createUserForm.controls['name'].dirty || createUserForm.controls['name'].touched)"
+            class="error-message"
+            >Introduce un nombre válido</span
+          >
+        </div>
+        <div>
+          <ion-input
+            type="email"
+            formControlName="email"
+            label="Email"
+            labelPlacement="floating"
+          ></ion-input>
+          <span
+            *ngIf="createUserForm.controls['email'].invalid && (createUserForm.controls['email'].dirty || createUserForm.controls['email'].touched)"
+            class="error-message"
+            >Introduce un email válido</span
+          >
+        </div>
+        <div>
+          <ion-input
+            type="password"
+            formControlName="password"
+            label="Contraseña"
+            labelPlacement="floating"
+          ></ion-input>
+          <span
+            *ngIf="createUserForm.controls['password'].invalid && (createUserForm.controls['password'].dirty || createUserForm.controls['password'].touched)"
+            class="error-message"
+            >Introduce una contraseña de 6 carácteres o más</span
+          >
+        </div>
+        <div class="file-wrapper">
+          <ion-label>Logo</ion-label>
+          <ion-button color="primary" (click)="file.click()">
+            <ion-icon name="attach"></ion-icon> Seleccionar logo
+          </ion-button>
+          <input
+            #file
+            name="file"
+            id="file"
+            type="file"
+            formControlName="logo"
+            class="inputLogo transparent"
+            style="opacity: 0; width: 0.1px; height: 0.1px"
+          />
+          <span
+            *ngIf="createUserForm.controls['logo'].invalid && (createUserForm.controls['logo'].dirty) || createUserForm.controls['logo'].touched"
+            class="error-message"
+            >Debes enviar una imagen</span
+          >
+        </div>
+        <div class="input-wrapper">
+          <ion-button
+            class="submit-content"
+            (click)="submitUser()"
+            shape="round"
+            >AÑADIR</ion-button
+          >
         </div>
       </form>
     </div>
-  </section>
+  </div>
 </ion-content>
