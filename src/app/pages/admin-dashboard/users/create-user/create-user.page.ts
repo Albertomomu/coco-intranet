@@ -80,7 +80,7 @@ export class CreateUserPage implements OnInit {
     console.warn(this.createUserForm);
 
     try {
-      await this.auth.createUser(
+      const userCredential = await this.auth.createUser(
         this.createUserForm.value.email,
         this.createUserForm.value.password
       );
@@ -88,11 +88,14 @@ export class CreateUserPage implements OnInit {
         this.createUserForm.value.email,
         this.selectedFile
       );
-      await this.formsService.uploadUserForm({
-        name: this.createUserForm.value.name,
-        email: this.createUserForm.value.email,
-        isAdmin: false,
-      });
+      await this.formsService.uploadUserForm(
+        {
+          name: this.createUserForm.value.name,
+          email: this.createUserForm.value.email,
+          isAdmin: false,
+        },
+        userCredential.user.uid
+      );
       console.log('Todas las funciones han salido exitosas');
       this.router.navigate(['/admin-dashboard']);
     } catch (error) {

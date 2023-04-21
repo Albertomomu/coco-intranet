@@ -22,7 +22,7 @@ export class AuthService {
 
   async createUser(email, password) {
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password);
+    return createUserWithEmailAndPassword(auth, email, password);
   }
 
   isAuthenticated(): boolean {

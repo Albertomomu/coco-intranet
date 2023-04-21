@@ -62,6 +62,7 @@ export class LoginPage implements OnInit {
 
     const docRef = doc(db, 'users', uid);
     const docSnap = await getDoc(docRef);
+    console.log(docSnap);
     if (docSnap.exists()) {
       this.user = docSnap.data() as IUser;
       if (this.user.isAdmin == true) {

@@ -3,7 +3,13 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  doc,
+  setDoc,
+} from 'firebase/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -32,7 +38,7 @@ export class FormsService {
     }
   }
 
-  async uploadUserForm(form) {
+  /*async uploadUserForm(form) {
     console.log(form);
     try {
       const app = initializeApp(environment.firebaseConfig);
@@ -41,6 +47,22 @@ export class FormsService {
       console.log('User saved in firestore: ');
     } catch (e) {
       console.error('Error adding document: ', e);
+    }
+  }*/
+
+  async uploadUserForm(form: any, uid) {
+    try {
+      const auth = getAuth(); // Obtiene el objeto auth de Firebase
+      const user = auth.currentUser; // Obtiene el usuario actualmente autenticado
+      if (user) {
+        const userFormRef = doc(getFirestore(), 'users', uid); // Crea una referencia al documento con el ID del UID del usuario
+        await setDoc(userFormRef, form); // Guarda el formulario en Firestore utilizando el ID del UID del usuario
+        console.log('El formulario se ha guardado exitosamente');
+      } else {
+        console.log('No hay ningún usuario autenticado');
+      }
+    } catch (error) {
+      console.error('Ha ocurrido un error al guardar el formulario: ', error);
     }
   }
 }
