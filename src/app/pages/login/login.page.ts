@@ -29,7 +29,7 @@ export class LoginPage implements OnInit {
 
   async login() {
     this.auth
-      .login('prueba@cocoglobalmedia.com', 'prueba')
+      .login(this.userFormData.email, this.userFormData.password)
       .then((userCredentials) => {
         this.getUser(userCredentials.user.uid);
       })
@@ -64,13 +64,11 @@ export class LoginPage implements OnInit {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
       this.user = docSnap.data() as IUser;
-      console.log(this.user);
       if (this.user.isAdmin == true) {
-        this.router.navigate(['/admin-dashboard']); // should be changed to admin dashboard
+        this.router.navigate(['/admin-dashboard']);
       } else {
         this.router.navigate(['/inicio']);
       }
-      //this.router.navigate(['/inicio']);
     } else {
       console.log('El usuario no existe en la base de datos');
     }

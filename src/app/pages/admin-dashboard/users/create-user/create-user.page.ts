@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { DocumentsService } from 'src/app/core/services/documents.service';
 import { FormsService } from 'src/app/core/services/forms.service';
@@ -17,7 +18,8 @@ export class CreateUserPage implements OnInit {
     private formBuilder: FormBuilder,
     private auth: AuthService,
     private formsService: FormsService,
-    private docService: DocumentsService
+    private docService: DocumentsService,
+    private router: Router
   ) {
     this.buildForm();
   }
@@ -45,7 +47,7 @@ export class CreateUserPage implements OnInit {
     }
   }
 
-  submitUser() {
+  /*submitUser() {
     if (!this.createUserForm.valid) {
       this.createUserForm.markAllAsTouched();
       this.createUserForm.markAsDirty();
@@ -64,9 +66,37 @@ export class CreateUserPage implements OnInit {
     this.formsService.uploadUserForm({
       name: this.createUserForm.value.name,
       email: this.createUserForm.value.email,
-      logo: this.createUserForm.value.logo,
       isAdmin: false,
     });
     //this.router.navigate(['/satisfaction-form-success']);
+  }*/
+  async submitUser() {
+    if (!this.createUserForm.valid) {
+      this.createUserForm.markAllAsTouched();
+      this.createUserForm.markAsDirty();
+      return;
+    }
+
+    console.warn(this.createUserForm);
+
+    try {
+      await this.auth.createUser(
+        this.createUserForm.value.email,
+        this.createUserForm.value.password
+      );
+      await this.docService.uploadDoc(
+        this.createUserForm.value.email,
+        this.selectedFile
+      );
+      await this.formsService.uploadUserForm({
+        name: this.createUserForm.value.name,
+        email: this.createUserForm.value.email,
+        isAdmin: false,
+      });
+      console.log('Todas las funciones han salido exitosas');
+      this.router.navigate(['/admin-dashboard']);
+    } catch (error) {
+      console.error('Ha ocurrido un error: ', error);
+    }
   }
 }
