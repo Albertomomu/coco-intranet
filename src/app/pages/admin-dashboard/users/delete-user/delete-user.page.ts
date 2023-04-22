@@ -18,4 +18,8 @@ export class DeleteUserPage implements OnInit {
   async getUsersList() {
     this.usersList = await this.formsService.getUsersList();
   }
+
+  async deleteUser(uid) {
+    this.formsService.deleteUser(uid);
+  }
 }
