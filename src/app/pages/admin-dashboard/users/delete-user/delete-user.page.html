@@ -5,5 +5,11 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-list lines="none" class="documents-list-container">
+    <ion-item *ngFor="let user of usersList" class="documents-list">
+      <div class="list-item">
+        <span class="document-name">{{user.name}}</span>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>

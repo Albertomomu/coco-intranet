@@ -9,6 +9,7 @@ import {
   addDoc,
   doc,
   setDoc,
+  getDocs,
 } from 'firebase/firestore';
 
 @Injectable({
@@ -16,6 +17,7 @@ import {
 })
 export class FormsService {
   docs: any = [];
+  usersList: any = [];
 
   constructor(private auth: AuthService) {}
 
@@ -64,5 +66,15 @@ export class FormsService {
     } catch (error) {
       console.error('Ha ocurrido un error al guardar el formulario: ', error);
     }
+  }
+
+  async getUsersList() {
+    const usersRef = collection(getFirestore(), 'users');
+    const usersSnapshot = await getDocs(usersRef);
+
+    usersSnapshot.forEach((user) => {
+      this.usersList.push(user.data());
+    });
+    return this.usersList;
   }
 }

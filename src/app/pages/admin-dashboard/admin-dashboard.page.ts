@@ -41,7 +41,7 @@ export class AdminDashboardPage implements OnInit {
           icon: 'trash',
           handler: () => {
             // Aquí puedes agregar tu código para abrir una pantalla de "Eliminar Usuario"
-            console.log('Eliminar Usuario');
+            this.router.navigate(['/delete-user']);
           },
         },
         {

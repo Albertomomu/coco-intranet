@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsService } from 'src/app/core/services/forms.service';
 
 @Component({
   selector: 'app-delete-user',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delete-user.page.scss'],
 })
 export class DeleteUserPage implements OnInit {
+  usersList: any = [];
 
-  constructor() { }
+  constructor(private formsService: FormsService) {}
 
   ngOnInit() {
+    this.getUsersList();
   }
 
+  async getUsersList() {
+    this.usersList = await this.formsService.getUsersList();
+  }
 }
