@@ -10,6 +10,7 @@ import {
   doc,
   setDoc,
   getDocs,
+  getDoc,
 } from 'firebase/firestore';
 
 @Injectable({
@@ -76,6 +77,12 @@ export class FormsService {
       this.usersList.push(user.data());
     });
     return this.usersList;
+  }
+  async getUser(uid) {
+    const userRef = doc(collection(getFirestore(), 'users'), uid);
+    const userSnapshot = await getDoc(userRef);
+
+    return userSnapshot.data();
   }
   async deleteUser(uid) {}
 }
