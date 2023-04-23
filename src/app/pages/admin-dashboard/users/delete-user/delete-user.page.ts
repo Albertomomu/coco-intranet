@@ -5,6 +5,8 @@ import {
   signInWithCredential,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
+import { deleteDoc, doc, getFirestore } from 'firebase/firestore';
+import { deleteObject, getStorage, ref } from 'firebase/storage';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { FormsService } from 'src/app/core/services/forms.service';
 
@@ -31,7 +33,7 @@ export class DeleteUserPage implements OnInit {
     const user = await this.formsService.getUser(uid);
 
     //Getting user info from firestore, then signing in with email and password for getting the user and delete it from authentication
-    signInWithEmailAndPassword(auth, user['email'], user['password'])
+    await signInWithEmailAndPassword(auth, user['email'], user['password'])
       .then((userCredential) => {
         deleteUser(userCredential.user);
       })
@@ -40,6 +42,19 @@ export class DeleteUserPage implements OnInit {
         // ..
       });
 
-    //Also needed to delete the user from firestore and storage logo once the auth is done.
+    //Deleting user from firestore
+    const db = getFirestore();
+    await deleteDoc(doc(db, 'users', uid));
+
+    //Deleting logo from storage
+    const storage = getStorage();
+
+    /*const email = user['email'];
+
+    const logo = ref(storage, `logos/${email}`);
+
+    deleteObject(logo).then(() => {
+      console.log('Logo deleted');
+    });*/
   }
 }
