@@ -32,6 +32,8 @@ export class DeleteUserPage implements OnInit {
     const auth = getAuth();
     const user = await this.formsService.getUser(uid);
 
+    console.log(user);
+
     //Getting user info from firestore, then signing in with email and password for getting the user and delete it from authentication
     await signInWithEmailAndPassword(auth, user['email'], user['password'])
       .then((userCredential) => {
@@ -49,12 +51,12 @@ export class DeleteUserPage implements OnInit {
     //Deleting logo from storage
     const storage = getStorage();
 
-    /*const email = user['email'];
+    const email = user['email'];
 
     const logo = ref(storage, `logos/${email}`);
 
     deleteObject(logo).then(() => {
       console.log('Logo deleted');
-    });*/
+    });
   }
 }

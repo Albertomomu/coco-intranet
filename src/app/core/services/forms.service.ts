@@ -70,6 +70,7 @@ export class FormsService {
   }
 
   async getUsersList() {
+    this.usersList = [];
     const usersRef = collection(getFirestore(), 'users');
     const usersSnapshot = await getDocs(usersRef);
 
