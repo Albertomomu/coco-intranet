@@ -59,5 +59,7 @@ export class DeleteUserPage implements OnInit {
     deleteObject(logo).then(() => {
       console.log('Logo deleted');
     });
+    this.usersList = [];
+    this.getUsersList();
   }
 }
