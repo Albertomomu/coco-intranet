@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>editUser</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="Anterior" icon="caret-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar usuario</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="container" [fullscreen]="true">
+  <ion-list lines="none" class="documents-list-container">
+    <ion-item *ngFor="let user of usersList" class="documents-list">
+      <div class="list-item">
+        <span class="document-name">{{user.name}}</span>
+        <div class="documents-icon-wrapper">
+          <button (click)="editUser(user.uid)"><img
+              src="../../../../../assets/img/users/edit.png"
+              alt="Eliminar usuario" width="30px" class="documents-list-img"></button>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>

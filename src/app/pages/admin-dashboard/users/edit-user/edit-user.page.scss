@@ -1,0 +1,34 @@
+.documents-list-container {
+    --background: #FAFAFA;
+
+    .documents-list {
+      --background: #FAFAFA;
+
+      div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        --background: #FAFAFA;
+        color: #3a3a3a;
+        font-size: 0.9rem;
+        cursor: pointer;
+
+        .document-name {
+          width: 90%;
+        }
+
+        .documents-icon-wrapper {
+          width: 10%;
+        }
+
+        button {
+          background: transparent;
+        }
+
+        .documents-list-img {
+          background: transparent;
+        }
+      }
+    }
+  }

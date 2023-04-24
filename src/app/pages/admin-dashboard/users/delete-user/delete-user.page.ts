@@ -26,7 +26,6 @@ export class DeleteUserPage implements OnInit {
 
   async getUsersList() {
     this.usersList = await this.usersService.getUsersList();
-    console.log(this.usersList);
   }
 
   async deleteUser(uid) {

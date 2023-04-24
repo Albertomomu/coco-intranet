@@ -29,7 +29,8 @@ export class LoginPage implements OnInit {
 
   async login() {
     this.auth
-      .login(this.userFormData.email, this.userFormData.password)
+      //.login(this.userFormData.email, this.userFormData.password)
+      .login('prueba@cocoglobalmedia.com', 'prueba')
       .then((userCredentials) => {
         this.getUser(userCredentials.user.uid);
       })
