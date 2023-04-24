@@ -8,6 +8,7 @@
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="updateUserForm">
   <ion-grid *ngIf="user !== []">
     <ion-row>
       <ion-col size-md="4" size-lg="3" size-xl="2" class="ion-text-center">
@@ -40,4 +41,5 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+</form>
 </ion-content>
