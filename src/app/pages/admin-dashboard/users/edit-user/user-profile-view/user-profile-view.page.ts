@@ -24,6 +24,13 @@ export class UserProfileViewPage implements OnInit {
     const uid = this.route.snapshot.paramMap.get('uid');
     const user = await this.usersService.getUser(uid);
     this.user = user;
+    this.getLogo();
+  }
+
+  async getLogo() {
+    await this.usersService.getUserLogo(this.user.email).then((url) => {
+      this.user.logo = url;
+    });
   }
 
   save() {}

@@ -12,6 +12,7 @@ import {
   getDocs,
   getDoc,
 } from 'firebase/firestore';
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -86,4 +87,10 @@ export class UsersService {
     return userSnapshot.data();
   }
   async deleteUser(uid) {}
+
+  async getUserLogo(email) {
+    const storage = getStorage();
+
+    return getDownloadURL(ref(storage, `${email}/logos/${email}`));
+  }
 }
