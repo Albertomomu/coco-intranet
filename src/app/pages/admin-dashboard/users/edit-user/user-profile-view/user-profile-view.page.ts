@@ -20,9 +20,7 @@ export class UserProfileViewPage implements OnInit {
     private formBuilder: FormBuilder,
     private auth: AuthService,
     private docService: DocumentsService
-  ) {
-    this.buildForm();
-  }
+  ) {}
 
   ngOnInit() {
     this.getUser();
@@ -30,10 +28,10 @@ export class UserProfileViewPage implements OnInit {
 
   buildForm() {
     this.updateUserForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      logo: ['', [Validators.required]],
+      name: [this.user.name, [Validators.required]],
+      email: [this.user.email, [Validators.required]],
+      isAdmin: [this.user.isAdmin, [Validators.required]],
+      logo: [this.user.logo, [Validators.required]],
     });
   }
 
@@ -42,6 +40,7 @@ export class UserProfileViewPage implements OnInit {
     const user = await this.usersService.getUser(uid);
     this.user = user;
     await this.getLogo();
+    this.buildForm();
   }
 
   async getLogo() {
