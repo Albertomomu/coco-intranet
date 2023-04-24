@@ -8,7 +8,7 @@ import {
 import { deleteDoc, doc, getFirestore } from 'firebase/firestore';
 import { deleteObject, getStorage, ref } from 'firebase/storage';
 import { AuthService } from 'src/app/core/auth/auth.service';
-import { FormsService } from 'src/app/core/services/forms.service';
+import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-delete-user',
@@ -18,20 +18,20 @@ import { FormsService } from 'src/app/core/services/forms.service';
 export class DeleteUserPage implements OnInit {
   usersList: any = [];
 
-  constructor(private formsService: FormsService, private auth: AuthService) {}
+  constructor(private usersService: UsersService, private auth: AuthService) {}
 
   ngOnInit() {
     this.getUsersList();
   }
 
   async getUsersList() {
-    this.usersList = await this.formsService.getUsersList();
+    this.usersList = await this.usersService.getUsersList();
     console.log(this.usersList);
   }
 
   async deleteUser(uid) {
     const auth = getAuth();
-    const user = await this.formsService.getUser(uid);
+    const user = await this.usersService.getUser(uid);
 
     console.log(user);
 

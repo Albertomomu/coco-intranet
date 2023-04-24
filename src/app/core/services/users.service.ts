@@ -16,7 +16,7 @@ import {
 @Injectable({
   providedIn: 'root',
 })
-export class FormsService {
+export class UsersService {
   docs: any = [];
   usersList: any = [];
 

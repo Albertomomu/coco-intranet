@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { FormsService } from 'src/app/core/services/forms.service';
+import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-satisfaction-form',
@@ -12,23 +12,26 @@ export class SatisfactionFormPage implements OnInit {
   satisfactionForm: FormGroup;
 
   get expectatives() {
-    return this.satisfactionForm.get("expectatives");
+    return this.satisfactionForm.get('expectatives');
   }
 
   get overallExperience() {
-    return this.satisfactionForm.get("overallExperience");
+    return this.satisfactionForm.get('overallExperience');
   }
 
   get recommendation() {
-    return this.satisfactionForm.get("recommendation");
+    return this.satisfactionForm.get('recommendation');
   }
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private formsService: FormsService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private usersService: UsersService
+  ) {
     this.buildForm();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   buildForm() {
     this.satisfactionForm = this.formBuilder.group({
@@ -63,7 +66,7 @@ export class SatisfactionFormPage implements OnInit {
 
     console.warn(this.satisfactionForm.value);
     //AQUI VA EL BACKEND
-    this.formsService.submitForm(this.satisfactionForm.value);
-    this.router.navigate(["/satisfaction-form-success"]);
+    this.usersService.submitForm(this.satisfactionForm.value);
+    this.router.navigate(['/satisfaction-form-success']);
   }
 }
