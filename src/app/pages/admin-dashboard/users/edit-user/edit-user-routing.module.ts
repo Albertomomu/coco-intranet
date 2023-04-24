@@ -6,8 +6,15 @@ import { EditUserPage } from './edit-user.page';
 const routes: Routes = [
   {
     path: '',
-    component: EditUserPage
-  }
+    component: EditUserPage,
+  },
+  {
+    path: 'user-profile-view/:uid',
+    loadChildren: () =>
+      import('./user-profile-view/user-profile-view.module').then(
+        (m) => m.UserProfileViewPageModule
+      ),
+  },
 ];
 
 @NgModule({

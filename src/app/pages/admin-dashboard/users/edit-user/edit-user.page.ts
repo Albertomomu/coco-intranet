@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { UsersService } from 'src/app/core/services/users.service';
 
@@ -10,7 +11,11 @@ import { UsersService } from 'src/app/core/services/users.service';
 export class EditUserPage implements OnInit {
   usersList: any = [];
 
-  constructor(private usersService: UsersService, private auth: AuthService) {}
+  constructor(
+    private usersService: UsersService,
+    private auth: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.getUsersList();
@@ -20,5 +25,7 @@ export class EditUserPage implements OnInit {
     this.usersList = await this.usersService.getUsersList();
   }
 
-  async editUser(uid) {}
+  async editUser(uid) {
+    this.router.navigate(['/edit-user/user-profile-view', uid]);
+  }
 }
