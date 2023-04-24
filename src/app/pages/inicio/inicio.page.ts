@@ -4,7 +4,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { environment } from 'src/environments/environment';
-import { FormsService } from 'src/app/core/services/forms.service';
+import { UsersService } from 'src/app/core/services/users.service';
 import {
   ActionPerformed,
   PushNotificationSchema,
@@ -22,7 +22,7 @@ export class InicioPage implements OnInit {
   constructor(
     private router: Router,
     private auth: AuthService,
-    private formsService: FormsService
+    private userService: UsersService
   ) {}
 
   ngOnInit() {
@@ -66,7 +66,7 @@ export class InicioPage implements OnInit {
   }
 
   getLogo() {
-    this.formsService.getUserLogo().then((url) => {
+    this.userService.getUserLogo().then((url) => {
       this.logoUrl = url;
     });
   }
