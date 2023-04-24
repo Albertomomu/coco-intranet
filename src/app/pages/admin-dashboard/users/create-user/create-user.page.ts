@@ -84,7 +84,7 @@ export class CreateUserPage implements OnInit {
         this.createUserForm.value.email,
         this.createUserForm.value.password
       );
-      await this.docService.uploadDoc(
+      await this.docService.uploadLogo(
         this.createUserForm.value.email,
         this.selectedFile
       );

@@ -12,6 +12,7 @@ import {
   getDocs,
   getDoc,
 } from 'firebase/firestore';
+import { getDownloadURL, getStorage, ref } from 'firebase/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -84,6 +85,13 @@ export class FormsService {
     const userSnapshot = await getDoc(userRef);
 
     return userSnapshot.data();
+  }
+
+  async getUserLogo() {
+    const storage = getStorage();
+    const auth = getAuth();
+
+    return getDownloadURL(ref(storage, `${auth.currentUser.email}/logos/${auth.currentUser.email}`));
   }
   async deleteUser(uid) {}
 }

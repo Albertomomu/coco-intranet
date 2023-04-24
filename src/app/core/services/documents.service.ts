@@ -27,13 +27,14 @@ export class DocumentsService {
     this.docs = [];
     const storage = getStorage();
     if (email) {
-      const docRef = ref(storage, email);
+      const docRef = ref(storage, `${email}/documents`);
       return await listAll(docRef);
     }
   }
-  async uploadDoc(email, document): Promise<any> {
+
+  async uploadLogo(email, document): Promise<any> {
     const storage = getStorage();
-    const storageRef = ref(storage, `logos/${email}`);
+    const storageRef = ref(storage, `${email}/logos/${email}`);
 
     uploadBytes(storageRef, document).then((snapshot) => {
       console.log('Uploaded');

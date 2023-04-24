@@ -4,6 +4,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { environment } from 'src/environments/environment';
+import { FormsService } from 'src/app/core/services/forms.service';
 import {
   ActionPerformed,
   PushNotificationSchema,
@@ -17,12 +18,17 @@ import {
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-  constructor(private router: Router, private auth: AuthService) {}
+  logoUrl: String;
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    private formsService: FormsService
+  ) {}
 
   ngOnInit() {
     const app = initializeApp(environment.firebaseConfig);
     const auth = getAuth(app);
-
+    this.getLogo();
     // Request permission to use push notifications
     // iOS will prompt user and return if they granted permission or not
     // Android will just grant without prompting
@@ -57,6 +63,12 @@ export class InicioPage implements OnInit {
       },
     );
   */
+  }
+
+  getLogo() {
+    this.formsService.getUserLogo().then((url) => {
+      this.logoUrl = url;
+    });
   }
 
   logout() {
