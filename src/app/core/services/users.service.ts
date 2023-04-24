@@ -12,7 +12,7 @@ import {
   getDocs,
   getDoc,
 } from 'firebase/firestore';
-import { getDownloadURL, getStorage, ref } from 'firebase/storage';
+import { getDownloadURL, getStorage, ref, uploadBytes,  } from 'firebase/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -85,6 +85,15 @@ export class UsersService {
     const userSnapshot = await getDoc(userRef);
 
     return userSnapshot.data();
+  }
+
+  async uploadLogo(email, document): Promise<any> {
+    const storage = getStorage();
+    const storageRef = ref(storage, `${email}/logos/${email}`);
+
+    uploadBytes(storageRef, document).then((snapshot) => {
+      console.log('Uploaded');
+    });
   }
 
   async getUserLogo() {
