@@ -17,7 +17,7 @@ import { getDownloadURL, getStorage, ref } from 'firebase/storage';
 @Injectable({
   providedIn: 'root',
 })
-export class FormsService {
+export class UsersService {
   docs: any = [];
   usersList: any = [];
 

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { DocumentsService } from 'src/app/core/services/documents.service';
-import { FormsService } from 'src/app/core/services/forms.service';
+import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-create-user',
@@ -17,7 +17,7 @@ export class CreateUserPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
-    private formsService: FormsService,
+    private usersService: UsersService,
     private docService: DocumentsService,
     private router: Router
   ) {
@@ -88,7 +88,7 @@ export class CreateUserPage implements OnInit {
         this.createUserForm.value.email,
         this.selectedFile
       );
-      await this.formsService.uploadUserForm(
+      await this.usersService.uploadUserForm(
         {
           name: this.createUserForm.value.name,
           email: this.createUserForm.value.email,
