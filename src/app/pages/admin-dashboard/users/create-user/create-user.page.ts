@@ -93,6 +93,7 @@ export class CreateUserPage implements OnInit {
           name: this.createUserForm.value.name,
           email: this.createUserForm.value.email,
           password: this.createUserForm.value.password,
+          uid: userCredential.user.uid,
           isAdmin: false,
         },
         userCredential.user.uid
