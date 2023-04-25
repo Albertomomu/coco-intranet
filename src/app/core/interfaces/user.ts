@@ -3,5 +3,5 @@ export interface IUser {
   email: string;
   photo: string;
   isAdmin: boolean;
-  initialForm: boolean;
+  isInitialForm: boolean;
 }

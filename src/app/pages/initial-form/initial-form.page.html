@@ -1,9 +1,60 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>initial-form</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="Anterior" icon="caret-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Rellena el formulario</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-Este es el formulario inicial
+  <div class="container">
+    <div class="form-container">
+      <form [formGroup]="satisfactionForm">
+        <div class="login-form">
+          <div>
+            <ion-label
+              >Facebook</ion-label
+            >
+           <ion-input type="text" placeholder="Email" formControlName="facebookEmail"></ion-input>
+           <span *ngIf="satisfactionForm.controls['facebookEmail'].invalid && (satisfactionForm.controls['facebookEmail'].dirty || satisfactionForm.controls['facebookEmail'].touched)" class="error-message">Introduce al menos 10 caracteres</span>
+           <ion-input type="password" placeholder="Password" formControlName="facebookPassword"></ion-input>
+           <span *ngIf="satisfactionForm.controls['facebookPassword'].invalid && (satisfactionForm.controls['facebookPassword'].dirty || satisfactionForm.controls['facebookPassword'].touched)" class="error-message">Introduce al menos 10 caracteres</span>
+          </div>
+          <div>
+            <ion-label
+              >Instagram</ion-label
+            >
+           <ion-input type="text" placeholder="Email" formControlName="instagramEmail"></ion-input>
+           <span *ngIf="satisfactionForm.controls['instagramEmail'].invalid && (satisfactionForm.controls['instagramEmail'].dirty || satisfactionForm.controls['instagramEmail'].touched)" class="error-message">Introduce al menos 10 caracteres</span>
+           <ion-input type="password" placeholder="Password" formControlName="instagramPassword"></ion-input>
+           <span *ngIf="satisfactionForm.controls['instagramPassword'].invalid && (satisfactionForm.controls['instagramPassword'].dirty || satisfactionForm.controls['instagramPassword'].touched)" class="error-message">Introduce al menos 10 caracteres</span>
+          </div>
+          <div>
+            <ion-label
+              >Google</ion-label
+            >
+           <ion-input type="text" placeholder="Email" formControlName="googleEmail"></ion-input>
+           <span *ngIf="satisfactionForm.controls['googleEmail'].invalid && (satisfactionForm.controls['googleEmail'].dirty || satisfactionForm.controls['googleEmail'].touched)" class="error-message">Introduce al menos 10 caracteres</span>
+           <ion-input type="password" placeholder="Password" formControlName="googlePassword"></ion-input>
+           <span *ngIf="satisfactionForm.controls['googlePassword'].invalid && (satisfactionForm.controls['googlePassword'].dirty || satisfactionForm.controls['googlePassword'].touched)" class="error-message">Introduce al menos 10 caracteres</span>
+          </div>
+          <div>
+            <ion-textarea
+              label="Objetivos"
+              placeholder="Escribe aquí tus objetivos"
+              formControlName="objectives"
+            ></ion-textarea>
+            <span *ngIf="satisfactionForm.controls['objectives'].invalid && (satisfactionForm.controls['objectives'].dirty || satisfactionForm.controls['objectives'].touched)" class="error-message">Introduce al menos 10 caracteres</span>
+          </div>
+
+          <div class="input-wrapper">
+            <ion-button class="submit-content" shape="round" (click)="submitSatisfaction()"
+              >ENVIAR</ion-button
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </ion-content>
+

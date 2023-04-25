@@ -67,6 +67,21 @@ export class UsersService {
     }
   }*/
 
+  async uploadUserInitFOrm(form) {
+    try {
+      const app = initializeApp(environment.firebaseConfig);
+      const db = getFirestore(app);
+      const user = getAuth(app);
+      const userFormRef = doc(db, 'users/', user.currentUser.uid);
+      await updateDoc(userFormRef, {
+        initialForm: form,
+        isInitialForm: true,
+      });
+    } catch (error) {
+      console.error('Ha ocurrido un error al guardar el formulario: ', error);
+    }
+  }
+
   async uploadUserForm(form: any, uid) {
     try {
       const auth = getAuth(); // Obtiene el objeto auth de Firebase

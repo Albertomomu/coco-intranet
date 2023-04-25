@@ -67,7 +67,7 @@ export class LoginPage implements OnInit {
       if (this.user.isAdmin == true) {
         this.router.navigate(['/admin-dashboard']);
       } else {
-        if (this.user.initialForm) {
+        if (this.user.isInitialForm) {
           this.router.navigate(['/inicio']);
         } else {
           this.router.navigate(['/initial-form']);
