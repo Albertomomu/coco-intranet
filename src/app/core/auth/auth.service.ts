@@ -17,7 +17,7 @@ export class AuthService {
 
   async login(email: string, password: string): Promise<any> {
     const auth = getAuth();
-    return await signInWithEmailAndPassword(auth, "info@cocoglobalmedia.com", "prueba");
+    return await signInWithEmailAndPassword(auth, email, password);
   }
 
   async createUser(email, password) {
