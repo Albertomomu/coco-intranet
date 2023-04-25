@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Anterior" icon="caret-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="updateUserForm">
+  <ion-grid *ngIf="user !== []">
+    <ion-row>
+      <ion-col size-md="4" size-lg="3" size-xl="2" class="ion-text-center">
+        <ion-avatar>
+          <img src="{{ user.logo || '../../../../../../../../assets/img/users/defaultUser.png'}}">
+        </ion-avatar>
+        <ion-button expand="block" fill="clear" color="medium">
+          <ion-icon slot="start" name="camera"></ion-icon>
+          Cambiar foto
+        </ion-button>
+      </ion-col>
+      <ion-col size-md="8" size-lg="9" size-xl="10">
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input type="text" formControlName="name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" formControlName="email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>¿Es administrador?</ion-label>
+            <ion-toggle formControlName="isAdmin"></ion-toggle>
+          </ion-item>
+        </ion-list>
+        <ion-button expand="block" color="primary" (click)="save()">
+          Guardar cambios
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+</ion-content>

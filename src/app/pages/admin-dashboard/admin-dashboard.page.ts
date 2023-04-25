@@ -33,7 +33,7 @@ export class AdminDashboardPage implements OnInit {
           icon: 'create',
           handler: () => {
             // Aquí puedes agregar tu código para abrir una pantalla de "Editar Usuario"
-            console.log('Editar Usuario');
+            this.router.navigate(['/edit-user']);
           },
         },
         {

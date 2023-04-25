@@ -11,8 +11,9 @@ import {
   setDoc,
   getDocs,
   getDoc,
+  updateDoc,
 } from 'firebase/firestore';
-import { getDownloadURL, getStorage, ref, uploadBytes,  } from 'firebase/storage';
+import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -37,6 +38,18 @@ export class UsersService {
         formDated
       );
       console.log('Document written with ID: ', docRef.id);
+    } catch (e) {
+      console.error('Error adding document: ', e);
+    }
+  }
+
+  async updateUserForm(form, uid) {
+    try {
+      const app = initializeApp(environment.firebaseConfig);
+      const db = getFirestore(app);
+      console.log(form);
+      const formRef = doc(db, 'users/', uid);
+      await updateDoc(formRef, form);
     } catch (e) {
       console.error('Error adding document: ', e);
     }
@@ -100,7 +113,15 @@ export class UsersService {
     const storage = getStorage();
     const auth = getAuth();
 
-    return getDownloadURL(ref(storage, `${auth.currentUser.email}/logos/${auth.currentUser.email}`));
+    return getDownloadURL(
+      ref(storage, `${auth.currentUser.email}/logos/${auth.currentUser.email}`)
+    );
   }
   async deleteUser(uid) {}
+
+  async getUserLogoByEmail(email) {
+    const storage = getStorage();
+
+    return getDownloadURL(ref(storage, `${email}/logos/${email}`));
+  }
 }

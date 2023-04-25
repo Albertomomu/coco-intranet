@@ -26,7 +26,6 @@ export class DeleteUserPage implements OnInit {
 
   async getUsersList() {
     this.usersList = await this.usersService.getUsersList();
-    console.log(this.usersList);
   }
 
   async deleteUser(uid) {
@@ -54,7 +53,7 @@ export class DeleteUserPage implements OnInit {
 
     const email = user['email'];
 
-    const logo = ref(storage, `logos/${email}`);
+    const logo = ref(storage, `${email}/logos/${email}`);
 
     deleteObject(logo).then(() => {
       console.log('Logo deleted');
