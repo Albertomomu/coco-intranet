@@ -47,7 +47,7 @@ export class UserProfileViewPage implements OnInit {
   }
 
   async getLogo() {
-    await this.usersService.getUserLogo(this.user.email).then((url) => {
+    await this.usersService.getUserLogoByEmail(this.user.email).then((url) => {
       this.user.logo = url;
     });
   }
