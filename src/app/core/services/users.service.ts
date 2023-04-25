@@ -11,6 +11,7 @@ import {
   setDoc,
   getDocs,
   getDoc,
+  updateDoc,
 } from 'firebase/firestore';
 import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 
@@ -37,6 +38,18 @@ export class UsersService {
         formDated
       );
       console.log('Document written with ID: ', docRef.id);
+    } catch (e) {
+      console.error('Error adding document: ', e);
+    }
+  }
+
+  async updateUserForm(form, uid) {
+    try {
+      const app = initializeApp(environment.firebaseConfig);
+      const db = getFirestore(app);
+      console.log(form);
+      const formRef = doc(db, 'users/', uid);
+      await updateDoc(formRef, form);
     } catch (e) {
       console.error('Error adding document: ', e);
     }

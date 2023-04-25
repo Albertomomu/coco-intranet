@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { DocumentsService } from 'src/app/core/services/documents.service';
 import { UsersService } from 'src/app/core/services/users.service';
@@ -19,8 +19,11 @@ export class UserProfileViewPage implements OnInit {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private auth: AuthService,
-    private docService: DocumentsService
-  ) {}
+    private docService: DocumentsService,
+    private router: Router
+  ) {
+    this.buildForm();
+  }
 
   ngOnInit() {
     this.getUser();
@@ -49,5 +52,14 @@ export class UserProfileViewPage implements OnInit {
     });
   }
 
-  save() {}
+  save() {
+    if (!this.updateUserForm.valid) {
+      this.updateUserForm.markAllAsTouched();
+      this.updateUserForm.markAsDirty();
+      return;
+    }
+    console.warn(this.updateUserForm.value);
+    //AQUI VA EL BACKEND
+    this.usersService.updateUserForm(this.updateUserForm.value, this.user.uid);
+  }
 }
