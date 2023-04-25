@@ -28,7 +28,11 @@ const routes: Routes = [
       import('./users/delete-user/delete-user.module').then(
         (m) => m.DeleteUserPageModule
       ),
+  },  {
+    path: 'documents',
+    loadChildren: () => import('./documents/documents.module').then( m => m.DocumentsPageModule)
   },
+
 ];
 
 @NgModule({

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>add-docs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="container" [fullscreen]="true">
+  <div class="container">
+    <div class="form-container">
+      <form [formGroup]="uploadDocumentForm">
+        <div class="file-wrapper">
+          <ion-button color="primary" (click)="file.click()">
+            <ion-icon name="attach"></ion-icon> {{fileName}}
+          </ion-button>
+          <input
+            #file
+            name="file"
+            id="file"
+            type="file"
+            formControlName="doc"
+            class="inputLogo transparent"
+            (change)="fileUpload($event)"
+            style="opacity: 0; width: 0.1px; height: 0.1px"
+            (change)="onFileSelected($event)"
+          />
+          <span
+            *ngIf="uploadDocumentForm.controls['doc'].invalid && (uploadDocumentForm.controls['doc'].dirty) || uploadDocumentForm.controls['doc'].touched"
+            class="error-message"
+            >Debes seleccionar un archivo</span
+          >
+        </div>
+        <div class="input-wrapper">
+          <ion-button
+            class="submit-content"
+            (click)="submitDoc()"
+            shape="round"
+            >AÑADIR</ion-button
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

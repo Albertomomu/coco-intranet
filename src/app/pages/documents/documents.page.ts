@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { getDownloadURL } from 'firebase/storage';
 import { DocumentsService } from 'src/app/core/services/documents.service';
-import { Browser } from '@capacitor/browser';
 import { Filesystem, Directory, GetUriOptions } from '@capacitor/filesystem';
 import { Http } from "@capacitor-community/http"
 import { Router } from '@angular/router';

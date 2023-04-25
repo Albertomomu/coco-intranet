@@ -25,7 +25,7 @@ export class AdminDashboardPage implements OnInit {
           icon: 'person-add',
           handler: () => {
             // Aquí puedes agregar tu código para abrir una pantalla de "Añadir Usuario"
-            this.router.navigate(['/create-user']);
+            this.router.navigate(['/admin-dashboard/create-user']);
           },
         },
         {
@@ -41,7 +41,7 @@ export class AdminDashboardPage implements OnInit {
           icon: 'trash',
           handler: () => {
             // Aquí puedes agregar tu código para abrir una pantalla de "Eliminar Usuario"
-            this.router.navigate(['/delete-user']);
+            this.router.navigate(['/admin-dashboard/delete-user']);
           },
         },
         {
@@ -53,6 +53,11 @@ export class AdminDashboardPage implements OnInit {
     });
     await actionSheet.present();
   }
+
+  manageDocuments() {
+    this.router.navigate(['/admin-dashboard/documents'])
+  }
+
   logout() {
     this.auth.signOut();
     this.router.navigate(['/home']);
