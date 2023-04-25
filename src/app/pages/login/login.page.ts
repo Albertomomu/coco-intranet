@@ -67,7 +67,11 @@ export class LoginPage implements OnInit {
       if (this.user.isAdmin == true) {
         this.router.navigate(['/admin-dashboard']);
       } else {
-        this.router.navigate(['/inicio']);
+        if (this.user.initialForm) {
+          this.router.navigate(['/inicio']);
+        } else {
+          this.router.navigate(['/initial-form']);
+        }
       }
     } else {
       console.log('El usuario no existe en la base de datos');

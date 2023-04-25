@@ -65,6 +65,10 @@ const routes: Routes = [
       ),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'initial-form',
+    loadChildren: () => import('./pages/initial-form/initial-form.module').then( m => m.InitialFormPageModule)
+  },
 ];
 
 @NgModule({
