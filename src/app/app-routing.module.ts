@@ -69,6 +69,10 @@ const routes: Routes = [
     path: 'initial-form',
     loadChildren: () => import('./pages/initial-form/initial-form.module').then( m => m.InitialFormPageModule)
   },
+  {
+    path: 'budget',
+    loadChildren: () => import('./pages/budget/budget.module').then( m => m.BudgetPageModule)
+  },
 ];
 
 @NgModule({

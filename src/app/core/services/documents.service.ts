@@ -6,7 +6,8 @@ import {
   ref,
   listAll,
   deleteObject,
-  uploadBytes
+  uploadBytes,
+  getDownloadURL,
 } from 'firebase/storage';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
@@ -28,6 +29,21 @@ export class DocumentsService {
     if (email) {
       const docRef = ref(storage, `${email}/documents`);
       return await listAll(docRef);
+    }
+  }
+
+  async getDoc() {
+    const app = initializeApp(environment.firebaseConfig);
+    const auth = getAuth(app);
+    const email = auth.currentUser?.email;
+    const storage = getStorage(app);
+
+    if (email) {
+      const fileRef = ref(storage, `${email}/budget/budget.pdf`);
+      const downloadURL = await getDownloadURL(fileRef);
+      return downloadURL;
+    } else {
+      return 'Error';
     }
   }
 
@@ -54,7 +70,7 @@ export class DocumentsService {
   async deleteDoc(url) {
     const storage = getStorage();
     const storageRef = ref(storage, url);
-    console.log(url)
+    console.log(url);
 
     return deleteObject(storageRef);
   }
