@@ -33,6 +33,7 @@ log.txt
 
 # Node
 /node_modules
+/src/app/serviceAccount
 npm-debug.log
 yarn-error.log
 
