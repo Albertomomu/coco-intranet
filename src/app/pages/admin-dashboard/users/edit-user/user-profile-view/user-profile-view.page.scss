@@ -11,7 +11,10 @@ ion-avatar {
       object-fit: cover;
     }
   }
-  
+  ion-button input[type="file"] {
+    display: none;
+  }
+
   ion-button {
     margin-top: 10px;
   }

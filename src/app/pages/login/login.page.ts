@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { getFirestore } from 'firebase/firestore';
 import { doc, getDoc } from 'firebase/firestore';
 import { IUser } from '../../core/interfaces/user';
+import admin from '../../serviceAccount/firebase-admin.js';
 
 @Component({
   selector: 'app-login',

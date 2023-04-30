@@ -37,6 +37,7 @@
     "cordova-plugin-file-transfer": "github:apache/cordova-plugin-file-transfer",
     "cors": "^2.8.5",
     "firebase": "^9.18.0",
+    "firebase-admin": "^11.7.0",
     "ionicons": "^6.0.3",
     "ng2-pdf-viewer": "^9.1.4",
     "rxjs": "~7.5.0",

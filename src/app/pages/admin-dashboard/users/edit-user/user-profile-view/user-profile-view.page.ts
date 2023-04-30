@@ -52,6 +52,10 @@ export class UserProfileViewPage implements OnInit {
     });
   }
 
+  handleUserLogo(file) {
+    console.log(file);
+  }
+
   save() {
     if (!this.updateUserForm.valid) {
       this.updateUserForm.markAllAsTouched();
