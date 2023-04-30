@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FcmService } from './core/services/fcm.service';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private fcmService: FcmService, private platform: Platform) {
+    this.itializeApp()
+  }
+
+  itializeApp() {
+    this.platform.ready().then(() => {
+      this.fcmService.initPush();
+    })
+  }
 }
