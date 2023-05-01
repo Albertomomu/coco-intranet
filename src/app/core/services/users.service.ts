@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { deleteUser, getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../auth/auth.service';
 import {
@@ -132,7 +132,19 @@ export class UsersService {
       ref(storage, `${auth.currentUser.email}/logos/${auth.currentUser.email}`)
     );
   }
-  async deleteUser(uid) {}
+
+  async deleteUser(email, password) {
+    const auth = getAuth();
+    //Getting user info from firestore, then signing in with email and password for getting the user and delete it from authentication
+    return await signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        deleteUser(userCredential.user);
+      })
+      .catch((error) => {
+        console.log(error);
+        // ..
+      });
+  }
 
   async getUserLogoByEmail(email) {
     const storage = getStorage();

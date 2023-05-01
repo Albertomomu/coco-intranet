@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
+import { getAuth } from 'firebase/auth';
 import { AuthService } from 'src/app/core/auth/auth.service';
 @Component({
   selector: 'app-admin-dashboard',
@@ -55,7 +56,7 @@ export class AdminDashboardPage implements OnInit {
   }
 
   manageDocuments() {
-    this.router.navigate(['/admin-dashboard/documents'])
+    this.router.navigate(['/admin-dashboard/documents']);
   }
 
   logout() {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
   createUserWithEmailAndPassword,
+  deleteUser,
   getAuth,
   signInWithEmailAndPassword,
   signOut,
