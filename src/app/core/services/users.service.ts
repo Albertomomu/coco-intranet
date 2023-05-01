@@ -136,7 +136,7 @@ export class UsersService {
   async deleteUser(email, password) {
     const auth = getAuth();
     //Getting user info from firestore, then signing in with email and password for getting the user and delete it from authentication
-    return await signInWithEmailAndPassword(auth, email, password)
+    await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         deleteUser(userCredential.user);
       })
@@ -144,6 +144,8 @@ export class UsersService {
         console.log(error);
         // ..
       });
+    const user = await this.getUser('g3LE59OusjgfbDt2CBojS0nsbIz2');
+    return signInWithEmailAndPassword(auth, user['email'], user['password']);
   }
 
   async getUserLogoByEmail(email) {
