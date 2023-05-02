@@ -72,7 +72,20 @@ const routes: Routes = [
   {
     path: 'budget',
     loadChildren: () => import('./pages/budget/budget.module').then( m => m.BudgetPageModule)
+  },  {
+    path: 'servicios',
+    loadChildren: () => import('./pages/servicios/servicios.module').then( m => m.ServiciosPageModule)
   },
+  {
+    path: 'informes',
+    loadChildren: () => import('./pages/informes/informes.module').then( m => m.InformesPageModule)
+  },
+  {
+    path: 'notifications',
+    loadChildren: () => import('./pages/notifications/notifications.module').then( m => m.NotificationsPageModule)
+  },
+
+
 ];
 
 @NgModule({
