@@ -1,4 +1,4 @@
-.container {
+/* .container {
     --background: #FAFAFA;
     font-size: 0.8rem;
     font-family: "Dosis";
@@ -39,7 +39,60 @@
       }
     }
   
+  } */
+  
+
+  ion-content {
+    --background: #fcfcfc;
+    .container {
+      height: 100%;
+      .customCard {
+        background: rgb(255, 255, 255);
+        background: linear-gradient(
+          90deg,
+          rgba(245, 245, 245, 1) 0%,
+          rgba(255, 255, 255, 1) 100%
+        );
+  
+        ion-card-subtitle {
+          color: #48a7ff;
+          font-weight: 400;
+          font-size: 0.8rem;
+        }
+  
+        &::before {
+          content: "";
+          position: absolute;
+          top: 39%;
+          bottom: 13%;
+          left: 50%;
+          border: 0.5px solid #b9b9b9;
+          border-radius: 1px;
+          transform: translateX(-50%);
+        }
+  
+        ion-card-content {
+          color: #585858;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+  
+          .content-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 0.2rem;
+  
+            ion-icon {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+    }
   }
+
   
   .documents-header {
     .documents-toolbar {

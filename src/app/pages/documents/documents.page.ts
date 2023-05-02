@@ -31,7 +31,8 @@ export class DocumentsPage implements OnInit {
     const toast = await this.toastController.create({
       message: `Archivo descargado en ${filePath}`,
       duration: 5000,
-      position: 'top'
+      position: 'bottom',
+      color: 'success'
     });
 
     await toast.present();

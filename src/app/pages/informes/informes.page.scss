@@ -5,24 +5,21 @@ ion-content {
     .customCard {
       min-height: 20%;
       background: rgb(255, 255, 255);
-      background: linear-gradient(
-        0deg,
-        rgba(245, 245, 245, 1) 0%,
-        rgba(255, 255, 255, 1) 100%
-      );
+      background: linear-gradient(130deg, #f5f3ff 0%, rgb(255, 255, 255) 100%);
 
       ion-card-subtitle {
-        color: #48a7ff;
+        color: #3c4ca0;
         font-weight: 400;
+        margin-left: 0.3rem;
       }
 
       &::before {
         content: "";
         position: absolute;
         top: 13%;
-        bottom: 13%;
+        bottom: 10%;
         left: 50%;
-        border: 0.5px solid #b9b9b9;
+        border: 0.5px solid #e3dfff;
         border-radius: 1px;
         transform: translateX(-50%);
       }
@@ -31,17 +28,23 @@ ion-content {
         color: #585858;
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
 
         .content-item {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap: .2rem;
+          gap: 0.2rem;
+          padding: 1rem;
+          border-radius: 16px;
+          color: #3c4ca0;
+          min-width: 40%;
+          margin: 0rem 0.3rem;
 
           ion-icon {
             font-size: 2.5rem;
+            color: #3c4ca0;
           }
         }
       }

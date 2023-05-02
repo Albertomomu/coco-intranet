@@ -7,20 +7,55 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="container">
-  <ion-list lines="none" class="documents-list-container">
+<ion-content [fullscreen]="true">
+  <div class="container">
+    <ion-card class="customCard" *ngFor="let document of docsListFormatted">
+      <ion-card-header>
+        <ion-card-subtitle (click)="document.visibility ? openDocument(document.url) : ''">{{document.name}}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content class="customContent">
+        <div class="content-item">
+          <ion-icon
+            [name]="document.visibility ? 'eye-outline' : 'eye-off-outline'"
+            (click)="document.visibility ? openDocument(document.url) : ''"
+          ></ion-icon>
+        </div>
+        <div class="content-item">
+          <ion-icon
+            name="download-outline"
+            (click)="downloadFile1(document.url, document.name)"
+          ></ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- <ion-list lines="none" class="documents-list-container">
     <ion-item *ngFor="let document of docsListFormatted" class="documents-list">
       <div class="list-item">
-        <span class="document-name" (click)="openDocument(document.url)">{{document.name}}</span>
+        <span class="document-name" (click)="openDocument(document.url)"
+          >{{document.name}}</span
+        >
         <div class="documents-icon-wrapper">
-          <button (click)="openDocument(document.url)"><img
+          <button (click)="openDocument(document.url)">
+            <img
               [src]="document.visibility ? '../../../assets/img/documents/view.png' : 'n./../../assets/img/documents/no-view2.png'"
-              alt="Descargar documento" width="30px" class="documents-list-img"></button>
-          <button (click)="downloadFile1(document.url, document.name)"><img
-              src="../../../assets/img/documents/download.png" alt="Descargar documento" width="30px"
-              class="documents-list-img"></button>
+              alt="Descargar documento"
+              width="30px"
+              class="documents-list-img"
+            />
+          </button>
+          <button (click)="downloadFile1(document.url, document.name)">
+            <img
+              src="../../../assets/img/documents/download.png"
+              alt="Descargar documento"
+              width="30px"
+              class="documents-list-img"
+            />
+          </button>
         </div>
       </div>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
 </ion-content>

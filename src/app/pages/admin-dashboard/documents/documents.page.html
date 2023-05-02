@@ -1,15 +1,18 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>documents</ion-title>
+<ion-header class="documents-header">
+  <ion-toolbar class="documents-toolbar">
+    <ion-title>Documentos</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/inicio"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list lines="none" class="documents-list-container">
-    <ion-item *ngFor="let user of usersList" class="documents-list">
-      <div class="list-item">
-        <span class="document-name" (click)="getUserDocs(user.email)">{{user.name}}</span>
-      </div>
-    </ion-item>
-  </ion-list>
+  <div class="container">
+    <ion-card class="customCard" *ngFor="let user of usersList" (click)="getUserDocs(user.email)">
+      <ion-card-header>
+        <ion-card-title>{{user.name}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </div>
 </ion-content>

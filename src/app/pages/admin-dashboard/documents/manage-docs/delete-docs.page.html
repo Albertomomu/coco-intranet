@@ -1,11 +1,39 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>delete-docs</ion-title>
+<ion-header class="documents-header">
+  <ion-toolbar class="documents-toolbar">
+    <ion-title>Documentos</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/admin-dashboard/documents"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list lines="none" class="documents-list-container">
+  <div class="container">
+    <ion-card class="customCard" *ngFor="let document of docsListFormatted">
+      <ion-card-header>
+        <ion-card-subtitle
+          (click)="document.visibility ? openDocument(document.url) : ''"
+          >{{document.name}}</ion-card-subtitle
+        >
+      </ion-card-header>
+
+      <ion-card-content class="customContent">
+        <div class="content-item">
+          <ion-icon
+            name="download-outline"
+            (click)="downloadFile1(document.url, document.name)"
+          ></ion-icon>
+        </div>
+        <div class="content-item">
+          <ion-icon
+            name="trash-outline"
+            (click)="deleteDoc(document.url)"
+          ></ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <!-- <ion-list lines="none" class="documents-list-container">
     <ion-item *ngFor="let document of docsListFormatted" class="documents-list">
       <div class="list-item">
         <span class="document-name" (click)="openDocument(document.url)">{{document.name}}</span>
@@ -19,7 +47,7 @@
         </div>
       </div>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
   <ion-fab slot="fixed" vertical="bottom" horizontal="end" (click)="addDocs()">
     <ion-fab-button>
       <ion-icon name="add"></ion-icon>

@@ -1,0 +1,16 @@
+ion-content {
+  --background: #fcfcfc;
+  .container {
+    height: 100%;
+    .customCard {
+      background: rgb(255, 255, 255);
+      background: linear-gradient(130deg, #f5f3ff 0%, rgb(255, 255, 255) 100%);
+
+      ion-card-title {
+        color: #3c4ca0;
+        font-size: 1.3rem;
+        font-weight: 400;
+      }
+    }
+  }
+}

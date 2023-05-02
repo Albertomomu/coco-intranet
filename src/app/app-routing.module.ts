@@ -31,7 +31,7 @@ const routes: Routes = [
       import('./pages/documents/documents.module').then(
         (m) => m.DocumentsPageModule
       ),
-    canActivate: [AuthGuard],
+    /* canActivate: [AuthGuard], */
   },
   {
     path: 'satisfaction-form',
@@ -72,7 +72,8 @@ const routes: Routes = [
   {
     path: 'budget',
     loadChildren: () => import('./pages/budget/budget.module').then( m => m.BudgetPageModule)
-  },  {
+  },
+  {
     path: 'servicios',
     loadChildren: () => import('./pages/servicios/servicios.module').then( m => m.ServiciosPageModule)
   },
