@@ -5,13 +5,15 @@ import { getFirestore } from 'firebase/firestore';
 import { doc, getDoc } from 'firebase/firestore';
 import { IUser } from '../../core/interfaces/user';
 import admin from '../../serviceAccount/firebase-admin.js';
-
+import 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  const 
   userFormData = {
     email: '',
     password: '',
@@ -32,6 +34,7 @@ export class LoginPage implements OnInit {
     this.auth
       .login(this.userFormData.email, this.userFormData.password)
       .then((userCredentials) => {
+        console.log(userCredentials);
         this.getUser(userCredentials.user.uid);
       })
       .catch((error) => {
@@ -57,6 +60,9 @@ export class LoginPage implements OnInit {
             break;
         }
       });
+
+    /* let tupac = await getAuth().currentUser.getIdTokenResult();
+      console.log(tupac) */
   }
   async getUser(uid) {
     const db = getFirestore();
@@ -66,6 +72,22 @@ export class LoginPage implements OnInit {
     if (docSnap.exists()) {
       this.user = docSnap.data() as IUser;
       if (this.user.isAdmin == true) {
+        const auth = getAuth();
+        const user = await auth.currentUser.getIdTokenResult().then((t) => {
+          console.log(t.claims)
+        });
+
+        /* auth.setCustomUserClaims(user.uid, { role: 'admin' })
+          .then(() => {
+            console.log(
+              'Claim personalizado establecido para el usuario',
+              user.uid
+            );
+          })
+          .catch((error) => {
+            console.log('Error al establecer el claim personalizado', error);
+          }); */
+
         this.router.navigate(['/admin-dashboard']);
       } else {
         if (this.user.isInitialForm) {
