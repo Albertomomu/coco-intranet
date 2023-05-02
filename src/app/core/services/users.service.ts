@@ -142,10 +142,7 @@ export class UsersService {
       })
       .catch((error) => {
         console.log(error);
-        // ..
       });
-    const user = await this.getUser('g3LE59OusjgfbDt2CBojS0nsbIz2');
-    return signInWithEmailAndPassword(auth, user['email'], user['password']);
   }
 
   async getUserLogoByEmail(email) {

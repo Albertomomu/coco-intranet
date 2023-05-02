@@ -17,22 +17,22 @@ import { UsersService } from 'src/app/core/services/users.service';
 })
 export class DeleteUserPage implements OnInit {
   usersList: any = [];
+  actualUser: any;
 
   constructor(private usersService: UsersService, private auth: AuthService) {}
 
   ngOnInit() {
     this.getUsersList();
+    this.actualUser = getAuth().currentUser.uid;
   }
 
   async getUsersList() {
     this.usersList = await this.usersService.getUsersList();
   }
-
   async deleteUser(uid) {
     const user = await this.usersService.getUser(uid);
 
     this.usersService.deleteUser(user['email'], user['password']);
-    console.log(user);
 
     //Deleting user from firestore
     const db = getFirestore();
@@ -50,5 +50,11 @@ export class DeleteUserPage implements OnInit {
     });
     this.usersList = [];
     this.getUsersList();
+    const backUser = await this.usersService.getUser(this.actualUser);
+    await signInWithEmailAndPassword(
+      getAuth(),
+      backUser['email'],
+      backUser['password']
+    );
   }
 }
