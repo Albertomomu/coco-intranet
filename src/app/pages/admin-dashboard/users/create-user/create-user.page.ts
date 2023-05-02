@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { AuthService } from 'src/app/core/auth/auth.service';
 import { UsersService } from 'src/app/core/services/users.service';
 
@@ -13,6 +14,7 @@ export class CreateUserPage implements OnInit {
   createUserForm: FormGroup;
   selectedFile: File;
   fileName: string = 'Seleccionar archivo';
+  actualUser: any;
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthService,
@@ -22,7 +24,9 @@ export class CreateUserPage implements OnInit {
     this.buildForm();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.actualUser = getAuth().currentUser.uid;
+  }
 
   onFileSelected(event) {
     this.selectedFile = event.target.files[0];
@@ -95,6 +99,13 @@ export class CreateUserPage implements OnInit {
           isAdmin: false,
         },
         userCredential.user.uid
+      );
+      const userToLogBack = await this.usersService.getUser(this.actualUser);
+      const auth = getAuth();
+      await signInWithEmailAndPassword(
+        auth,
+        userToLogBack['email'],
+        userToLogBack['password']
       );
       console.log('Todas las funciones han salido exitosas');
       this.router.navigate(['/admin-dashboard']);

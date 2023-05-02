@@ -7,6 +7,7 @@ import {
   signOut,
 } from 'firebase/auth';
 import { from, Observable } from 'rxjs';
+import { UsersService } from '../services/users.service';
 
 @Injectable({
   providedIn: 'root',
