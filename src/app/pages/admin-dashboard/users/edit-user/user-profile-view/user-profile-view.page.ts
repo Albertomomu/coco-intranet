@@ -13,6 +13,7 @@ import { UsersService } from 'src/app/core/services/users.service';
 export class UserProfileViewPage implements OnInit {
   updateUserForm: FormGroup;
   user: any = [];
+  fileName: string = 'Cambiar foto';
 
   constructor(
     private usersService: UsersService,
@@ -65,5 +66,13 @@ export class UserProfileViewPage implements OnInit {
     console.warn(this.updateUserForm.value);
     //AQUI VA EL BACKEND
     this.usersService.updateUserForm(this.updateUserForm.value, this.user.uid);
+  }
+
+  fileUpload(event) {
+    if (event.target.files.length > 0) {
+      this.fileName = event.target.files[0].name;
+    } else {
+      this.fileName = 'Cambiar foto';
+    }
   }
 }

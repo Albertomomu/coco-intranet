@@ -15,10 +15,10 @@
         <ion-avatar>
           <img src="{{ user.logo || '../../../../../../../../assets/img/users/defaultUser.png'}}">
         </ion-avatar>
-          <ion-button expand="block" fill="clear" color="medium" input>
-            <input type="file" (change)="handleUserLogo($event)">
+          <ion-button expand="block" fill="clear" color="medium" (click)="file.click()">
+            <input #file type="file" (change)="[handleUserLogo($event), fileUpload($event)]">
             <ion-icon slot="start" name="camera"></ion-icon>
-            Cambiar foto
+            {{fileName}}
           </ion-button>
       </ion-col>
       <ion-col size-md="8" size-lg="9" size-xl="10">
