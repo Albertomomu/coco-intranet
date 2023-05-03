@@ -4,11 +4,20 @@
       <img src="{{logoUrl}}" alt="">
     </div>
     <div class="inicio-wrapper">
-      <button class="inicio-buttons" routerLink="/servicios">Servicios</button>
-      <button class="inicio-buttons" routerLink="/informes">Informes</button>
-      <button class="inicio-buttons" routerLink="/documents">Documentos</button>
-      <button class="inicio-buttons" routerLink="/notifications">Notificaciones</button>
-      <button class="signOut-button" (click)="logout()">Cerrar sesión</button>
+      <div class="inicio-wrapper-pack">
+        <div class="button-pack">
+          <button class="inicio-buttons" routerLink="/servicios">Servicios</button>
+        </div>
+        <div class="button-pack">
+          <ion-icon class="logo-button" name="calendar-number-outline"></ion-icon>
+          <button class="inicio-buttons" routerLink="/informes">Agenda</button>
+        </div>
+      </div>
+      <div class="inicio-wrapper-pack">
+        <button class="inicio-buttons" routerLink="/documents">Informes</button>
+        <button class="inicio-buttons" routerLink="/notifications">Notificaciones</button>
+      </div>
     </div>
+    <button class="signOut-button" (click)="logout()">Cerrar sesión</button>
   </section>
 </ion-content>
