@@ -13,7 +13,13 @@ import {
   getDoc,
   updateDoc,
 } from 'firebase/firestore';
-import { getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
+import {
+  deleteObject,
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytes,
+} from 'firebase/storage';
 
 @Injectable({
   providedIn: 'root',
@@ -53,6 +59,28 @@ export class UsersService {
     } catch (e) {
       console.error('Error adding document: ', e);
     }
+  }
+
+  async updateUserPhoto(document, email) {
+    const storage = getStorage();
+    const storageRef = ref(storage, `${email}/logos/${email}`);
+
+    // Borra el archivo existente
+    deleteObject(storageRef)
+      .then(() => {
+        // El archivo ha sido borrado correctamente
+        uploadBytes(storageRef, document)
+          .then((snapshot) => {
+            console.log('Uploaded');
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      })
+      .catch((error) => {
+        // Hubo un error al borrar el archivo
+        console.error(error);
+      });
   }
 
   /*async uploadUserForm(form) {

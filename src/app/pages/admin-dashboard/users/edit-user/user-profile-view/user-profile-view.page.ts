@@ -14,6 +14,7 @@ export class UserProfileViewPage implements OnInit {
   updateUserForm: FormGroup;
   user: any = [];
   fileName: string = 'Cambiar foto';
+  selectedFile: any;
 
   constructor(
     private usersService: UsersService,
@@ -53,8 +54,16 @@ export class UserProfileViewPage implements OnInit {
     });
   }
 
-  handleUserLogo(file) {
-    console.log(file);
+  fileUpload(event) {
+    if (event.target.files.length > 0) {
+      this.fileName = event.target.files[0].name;
+    } else {
+      this.fileName = 'Cambiar foto';
+    }
+  }
+
+  handleUserLogo(event) {
+    this.selectedFile = event.target.files[0];
   }
 
   save() {
@@ -65,14 +74,10 @@ export class UserProfileViewPage implements OnInit {
     }
     console.warn(this.updateUserForm.value);
     //AQUI VA EL BACKEND
-    this.usersService.updateUserForm(this.updateUserForm.value, this.user.uid);
-  }
-
-  fileUpload(event) {
-    if (event.target.files.length > 0) {
-      this.fileName = event.target.files[0].name;
-    } else {
-      this.fileName = 'Cambiar foto';
-    }
+    this.usersService
+      .updateUserForm(this.updateUserForm.value, this.user.uid)
+      .then(() => {
+        this.usersService.updateUserPhoto(this.selectedFile, this.user.email);
+      });
   }
 }
